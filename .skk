@@ -1,0 +1,2 @@
+(setq skk-use-viper t)
+(setq skk-use-jisx0201-input-method t)
