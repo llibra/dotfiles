@@ -288,7 +288,9 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 (require 'auto-complete-config nil t)
 
 (when (featurep 'auto-complete)
-  (ac-config-default))
+  (ac-config-default)
+  (setq ac-use-fuzzy t)
+  (ac-set-trigger-key "TAB"))
 
 ;;;; YASnippet
 
