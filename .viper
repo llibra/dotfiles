@@ -22,6 +22,7 @@
       `(inferior-scheme-mode
         inferior-caml-mode
         tuareg-interactive-mode
+        diff-mode
         ,@viper-emacs-state-mode-list))
 
 ;;; UI
