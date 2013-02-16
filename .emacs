@@ -109,7 +109,11 @@
   (set-face-attribute 'highlight nil
                       :underline t
                       :foreground "#ef2929"
-                      :background "#ffffff")
+                      :background 'unspecified)
+  (set-face-attribute 'lazy-highlight nil
+                      :underline t
+                      :foreground "#ef2929"
+                      :background 'unspecified)
   (set-face-attribute 'region nil
                       :foreground "#ffffff"
                       :background "#aaaaaa")
