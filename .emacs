@@ -243,6 +243,32 @@
                                   :weight 'normal
                                   :foreground (tango-color 'butter-2)))))
 
+;;;; Diff
+
+(when window-system
+  (add-hook 'diff-mode-hook
+            (lambda ()
+              (set-face-attribute 'diff-context nil
+                                  :foreground (tango-color 'alminium-6))
+              (set-face-attribute 'diff-index nil
+                                  :weight 'normal
+                                  :foreground (tango-color 'alminium-6)
+                                  :background 'unspecified)
+              (set-face-attribute 'diff-header nil
+                                  :foreground (tango-color 'alminium-6)
+                                  :background 'unspecified)
+              (set-face-attribute 'diff-file-header nil
+                                  :weight 'normal
+                                  :foreground (tango-color 'alminium-6)
+                                  :background 'unspecified)
+              (set-face-attribute 'diff-hunk-header nil
+                                  :foreground (tango-color 'skyblue-2)
+                                  :background 'unspecified)
+              (set-face-attribute 'diff-added nil
+                                  :foreground (tango-color 'chameleon-2))
+              (set-face-attribute 'diff-removed nil
+                                  :foreground (tango-color 'scarletred-1)))))
+
 ;;;; Info
 
 (when window-system
