@@ -116,50 +116,50 @@
 
 (when window-system
   (set-face-attribute 'default nil
-                      :foreground "#1a1a1a"
+                      :foreground (tango-color 'alminium-6)
                       :background "#ffffff")
   (set-face-attribute 'cursor nil
-                      :background "#666666")
+                      :background (tango-color 'alminium-2))
   (set-face-attribute 'mode-line nil
                       :box "#ffffff"
                       :foreground "#ffffff"
-                      :background "#333333")
+                      :background (tango-color 'alminium-5))
   (set-face-attribute 'mode-line-buffer-id nil
                       :weight 'normal)
   (set-face-attribute 'mode-line-highlight nil
-                      :box "#ffffff"
-                      :background "#999999")
+                      :box nil; "#ffffff"
+                      :background (tango-color 'alminium-6))
   (set-face-attribute 'mode-line-inactive nil
                       :box "#ffffff"
                       :foreground "#ffffff"
-                      :background "#aaaaaa")
+                      :background (tango-color 'alminium-3))
   (set-face-attribute 'minibuffer-prompt nil
-                      :foreground "#3465a4")
+                      :foreground (tango-color 'skyblue-2))
   (set-face-attribute 'fringe nil
                       :foreground "#ffffff"
-                      :background "#dddddd")
+                      :background (tango-color 'alminium-2))
   (set-face-attribute 'header-line nil
                       :box "#ffffff"
                       :foreground "#ffffff"
-                      :background "#666666")
+                      :background (tango-color 'alminium-4))
   (set-face-attribute 'highlight nil
                       :underline t
-                      :foreground "#ef2929"
+                      :foreground (tango-color 'scarletred-1)
                       :background 'unspecified)
   (set-face-attribute 'lazy-highlight nil
                       :underline t
-                      :foreground "#ef2929"
+                      :foreground (tango-color 'scarletred-1)
                       :background 'unspecified)
   (set-face-attribute 'region nil
                       :foreground "#ffffff"
-                      :background "#aaaaaa")
+                      :background (tango-color 'alminium-3))
   (set-face-attribute 'isearch nil
                       :weight 'normal
                       :underline t
-                      :foreground "#ef2929"
+                      :foreground (tango-color 'scarletred-1)
                       :background 'unspecified)
   (set-face-attribute 'match nil
-                      :foreground "#ef2929"
+                      :foreground (tango-color 'scarletred-1)
                       :background 'unspecified
                       :underline t))
 
@@ -191,21 +191,25 @@
             (lambda ()
               (set-face-attribute 'font-lock-builtin-face nil
                                   :weight 'normal
-                                  :foreground "#c4a000")
+                                  :foreground (tango-color 'chocolate-2))
               (set-face-attribute 'font-lock-keyword-face nil
                                   :weight 'normal
-                                  :foreground "#3465a4")
+                                  :foreground (tango-color 'skyblue-2))
               (set-face-attribute 'font-lock-function-name-face nil
-                                  :foreground "#4e9a06")
+                                  :foreground (tango-color 'butter-3))
               (set-face-attribute 'font-lock-variable-name-face nil
-                                  :foreground "#06989a")
+                                  :foreground (tango-color 'butter-3))
               (set-face-attribute 'font-lock-constant-face nil
-                                  :foreground "#9999aa")
+                                  :foreground (tango-color 'alminium-3))
               (set-face-attribute 'font-lock-string-face nil
-                                  :foreground "#9999aa")
+                                  :foreground (tango-color 'alminium-3))
+              (set-face-attribute 'font-lock-type-face nil
+                                  :foreground (tango-color 'chameleon-3))
               (set-face-attribute 'font-lock-comment-face nil
-                                  :foreground "#9999aa")
+                                  :foreground (tango-color 'alminium-3))
               (set-face-attribute 'font-lock-warning-face nil
+                                  :underline t
+                                  :foreground (tango-color 'butter-2)
                                   :weight 'normal))))
 
 ;;;; Show Paren
@@ -214,11 +218,11 @@
 
 (when window-system
   (set-face-attribute 'show-paren-match nil
-                      :underline "#3465a4"
+                      :underline (tango-color 'skyblue-2)
                       :foreground 'unspecified
                       :background 'unspecified)
   (set-face-attribute 'show-paren-mismatch nil
-                      :underline "#ef2929"
+                      :underline (tango-color 'scarletred-1)
                       :foreground 'unspecified
                       :background 'unspecified))
 
@@ -233,15 +237,15 @@
   (add-hook 'Info-mode-hook
             (lambda ()
               (set-face-attribute 'info-header-xref nil
-                                  :foreground "#729fcf")
+                                  :foreground (tango-color 'skyblue-1))
               (set-face-attribute 'info-xref nil
                                   :underline t
-                                  :foreground "#3465a4")
+                                  :foreground (tango-color 'skyblue-1))
               (set-face-attribute 'info-xref-visited nil
-                                  :foreground "#75507b")
+                                  :foreground (tango-color 'plum-1))
               (set-face-attribute 'info-node nil
                                   :slant 'normal
-                                  :foreground "#3465a4"))))
+                                  :foreground (tango-color 'skyblue-1)))))
 
 ;;;; Shell
 
@@ -296,7 +300,7 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
             (lambda ()
               (set-face-attribute 'comint-highlight-prompt nil
                                   :weight 'normal
-                                  :foreground "#1144bb"))))
+                                  :foreground (tango-color 'skyblue-2)))))
 
 ;;;; Compilation
 
@@ -304,12 +308,12 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
   (add-hook 'compilation-mode-hook
             (lambda ()
               (set-face-attribute 'compilation-info nil
-                                  :foreground "#4e9a06"
+                                  :foreground (tango-color 'chameleon-3)
                                   :weight 'normal)
               (set-face-attribute 'compilation-error nil
-                                  :foreground "#ef2929")
+                                  :foreground (tango-color 'scarletred-1))
               (set-face-attribute 'compilation-line-number nil
-                                  :foreground "#06989a"))))
+                                  :foreground (tango-color 'skyblue-2)))))
 
 ;;;; Grep
 
@@ -366,15 +370,15 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
     (add-hook 'slime-mode-hook
               (lambda () 
                 (set-face-attribute 'slime-repl-prompt-face nil
-                                    :foreground "#3465a4")
+                                    :foreground (tango-color 'skyblue-2))
                 (set-face-attribute 'slime-error-face nil
-                                    :underline "#ef2929")
+                                    :underline (tango-color 'scarletred-1))
                 (set-face-attribute 'slime-warning-face nil
-                                    :underline "#c4a000")
+                                    :underline (tango-color 'butter-2))
                 (set-face-attribute 'slime-inspector-action-face nil
-                                    :foreground "#ef2929")
+                                    :foreground (tango-color 'scarletred-1))
                 (set-face-attribute 'slime-repl-inputed-output-face nil
-                                    :foreground "#ef2929")
+                                    :foreground (tango-color 'scarletred-1))
                 (set-face-attribute 'slime-repl-output-mouseover-face nil
                                     :box nil
                                     :underline t))))
@@ -504,10 +508,10 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
     (add-hook 'tuareg-mode-hook
               (lambda ()
                 (set-face-attribute 'tuareg-font-lock-governing-face nil
-                                    :foreground (face-attribute 'font-lock-keyword-face :foreground)
+                                    :foreground (tango-color 'skyblue-2)
                                     :weight 'normal)
                 (set-face-attribute 'tuareg-font-lock-operator-face nil
-                                    :foreground "#999999"))))
+                                    :foreground (tango-color 'alminium-4)))))
 
   (add-hook 'tuareg-mode-hook 'viper-mode))
 
@@ -535,11 +539,11 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
     (add-hook 'tuareg-mode-hook
               (lambda ()
                 (set-face-attribute 'ocamlspot-spot-face nil
-                                    :foreground "#ef2929"
+                                    :foreground (tango-color 'scarletred-1)
                                     :background 'default
                                     :underline t)
                 (set-face-attribute 'ocamlspot-tree-face nil
-                                    :foreground "#3465a4"
+                                    :foreground (tango-color 'skyblue-2)
                                     :background 'default
                                     :underline t))))
 
@@ -621,35 +625,35 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
             (lambda ()
               (set-face-attribute 'navi2ch-list-category-face nil
                                   :weight 'normal
-                                  :foreground "#c4a000")
+                                  :foreground (tango-color 'butter-2))
               (set-face-attribute 'navi2ch-list-board-name-face nil
                                   :foreground "#06989a")
               (set-face-attribute 'navi2ch-article-header-face nil
                                   :weight 'normal
-                                  :foreground "#4e9a06")
+                                  :foreground (tango-color 'chameleon-3))
               (set-face-attribute 'navi2ch-article-header-contents-face nil
-                                  :foreground "#999999")
+                                  :foreground (tango-color 'alminium-4))
               (set-face-attribute 'navi2ch-article-header-fusianasan-face nil
-                                  :foreground "#3465a4")
+                                  :foreground (tango-color 'skyblue-2))
               (set-face-attribute 'navi2ch-article-link-face nil
                                   :weight 'normal
                                   :underline t
-                                  :foreground "#3465a4")
+                                  :foreground (tango-color 'skyblue-2))
               (set-face-attribute 'navi2ch-article-url-face nil
                                   :weight 'normal
                                   :underline t
-                                  :foreground "#3465a4")
+                                  :foreground (tango-color 'skyblue-2))
               (set-face-attribute 'navi2ch-article-message-separator-face nil
-                                  :foreground "#999999")
+                                  :foreground (tango-color 'alminium-4))
               (set-face-attribute 'navi2ch-bm-cache-face nil
-                                  :foreground "#75507b")
+                                  :foreground (tango-color 'plum-2))
               (set-face-attribute 'navi2ch-bm-view-face nil
-                                  :foreground "#ef2929")
+                                  :foreground (tango-color 'scarletred-1))
               (set-face-attribute 'navi2ch-bm-update-face nil
-                                  :foreground "#3465a4")
+                                  :foreground (tango-color 'skyblue-2))
               (set-face-attribute 'navi2ch-bm-mark-face nil
                                   :underline nil
-                                  :foreground "#4e9a06"))))
+                                  :foreground (tango-color 'chameleon-3)))))
 
 ;;;; Misc
 

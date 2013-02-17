@@ -31,11 +31,11 @@
   (setq viper-insert-state-cursor-color nil)
   (setq viper-replace-overlay-cursor-color nil)
   (set-face-attribute 'viper-replace-overlay nil
-                      :underline "#ef2929"
+                      :underline (tango-color 'scarletred-1)
                       :foreground 'unspecified
                       :background 'unspecified)
   (set-face-attribute 'viper-search nil
-                      :underline "#ef2929"
+                      :underline (tango-color 'scarletred-1)
                       :foreground 'unspecified
                       :background 'unspecified)
   (set-face-attribute 'viper-minibuffer-vi nil

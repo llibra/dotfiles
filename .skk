@@ -5,13 +5,13 @@
       skk-use-jisx0201-input-method t)
 
 (when window-system
-  (setq skk-cursor-latin-color "#babdb6")
-  (setq skk-cursor-hiragana-color "#ef2929")
-  (setq skk-cursor-katakana-color "#4e9a06")
-  (setq skk-cursor-jisx0201-color "#ad7fa8")
-  (setq skk-cursor-abbrev-color "#729fcf")
-  (setq skk-cursor-jisx0208-latin-color "#fce94f")
+  (setq skk-cursor-latin-color (tango-color 'alminium-2)
+        skk-cursor-hiragana-color (tango-color 'scarletred-1)
+        skk-cursor-katakana-color (tango-color 'chameleon-2)
+        skk-cursor-jisx0201-color (tango-color 'plum-1)
+        skk-cursor-abbrev-color (tango-color 'skyblue-1)
+        skk-cursor-jisx0208-latin-color (tango-color 'butter-2))
   (set-face-attribute 'skk-henkan-face-default nil
-                      :underline "#babdb6"
+                      :underline (tango-color 'alminium-3)
                       :foreground 'unspecified
                       :background 'unspecified))
