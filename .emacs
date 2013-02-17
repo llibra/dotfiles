@@ -231,6 +231,18 @@
 (setq viper-mode t)
 (require 'viper)
 
+;;;; Dired
+
+(when window-system
+  (add-hook 'dired-mode-hook
+            (lambda ()
+              (set-face-attribute 'dired-flagged nil
+                                  :weight 'normal
+                                  :foreground (tango-color 'scarletred-1))
+              (set-face-attribute 'dired-marked nil
+                                  :weight 'normal
+                                  :foreground (tango-color 'butter-2)))))
+
 ;;;; Info
 
 (when window-system
