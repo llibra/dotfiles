@@ -19,6 +19,42 @@
 (defmacro when-x (&rest body)
   `(if-x (progn ,@body)))
 
+;;;; Functions
+
+(defconst tango-colors
+  '((butter-1 . "fce94f")
+    (butter-2 . "edd400")
+    (butter-3 . "c4a000")
+    (orange-1 . "fcaf3e")
+    (orange-2 . "f57900")
+    (orange-3 . "ce5c00")
+    (chocolate-1 . "e9b96e")
+    (chocolate-2 . "c17d11")
+    (chocolate-3 . "8f5902")
+    (chameleon-1 . "8ae234")
+    (chameleon-2 . "73d216")
+    (chameleon-3 . "4e9a06")
+    (skyblue-1 . "729fcf")
+    (skyblue-2 . "3465a4")
+    (skyblue-3 . "204a87")
+    (plum-1 . "ad7fa8")
+    (plum-2 . "75507b")
+    (plum-3 . "5c3566")
+    (scarletred-1 . "ef2929")
+    (scarletred-2 . "cc0000")
+    (scarletred-3 . "a40000")
+    (alminium-1 . "eeeeec")
+    (alminium-2 . "d3d7cf")
+    (alminium-3 . "babdb6")
+    (alminium-4 . "888a85")
+    (alminium-5 . "555753")
+    (alminium-6 . "2e3436")))
+
+(defun tango-color (name)
+  (let ((entry (assq name tango-colors)))
+    (unless entry (error "%s is unknown color name." name))
+    (format "#%s" (cdr entry))))
+
 ;;;; Languages and encodings
 
 (set-language-environment "Japanese")
