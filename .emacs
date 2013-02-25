@@ -245,6 +245,8 @@
 
 ;;;; Diff
 
+(setq diff-switches "-u")
+
 (when window-system
   (add-hook 'diff-mode-hook
             (lambda ()
