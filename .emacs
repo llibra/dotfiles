@@ -369,7 +369,8 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 
 (when (featurep 'auto-complete)
   (ac-config-default)
-  (setq ac-use-fuzzy t)
+  (setq ac-use-fuzzy t
+        ac-disable-faces (cons 'viper-replace-overlay ac-disable-faces))
   (ac-set-trigger-key "TAB"))
 
 ;;;; YASnippet
