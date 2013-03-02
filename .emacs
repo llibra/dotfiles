@@ -248,6 +248,9 @@
                                   :weight 'normal
                                   :foreground (tango-color 'butter-2)))))
 
+;; For suppression of overwriting the C-x C-j key binding. SKK uses it.
+(setq dired-bind-jump nil)
+
 ;;;; Diff
 
 (setq diff-switches "-u")
