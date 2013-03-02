@@ -21,6 +21,11 @@
 
 ;;;; Functions
 
+(defun set-face-attributes (face frame attrs)
+  (let* ((attrs (mapcar (lambda (x) (list (car x) (cdr x))) attrs))
+         (attrs (apply 'nconc attrs)))
+    (apply 'set-face-attribute face frame attrs)))
+
 (defconst tango-colors
   '((butter-1 . "fce94f")
     (butter-2 . "edd400")
