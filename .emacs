@@ -384,6 +384,7 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  (global-set-key (kbd "C-x b") 'helm-buffers-list)
 
   (define-key helm-map (kbd "C->") 'helm-execute-persistent-action)
   (define-key helm-find-files-map (kbd "C-<") 'helm-find-files-down-one-level)
