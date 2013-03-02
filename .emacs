@@ -368,6 +368,51 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
             (lambda ()
               (grep-apply-setting 'grep-use-null-device nil))))
 
+;;;; Helm
+
+(require 'helm-config nil t)
+
+(when (featurep 'helm-config)
+  (require 'helm)
+  (require 'helm-command)
+  (require 'helm-files)
+
+  (helm-mode 1)
+
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+  (define-key helm-map (kbd "C->") 'helm-execute-persistent-action)
+  (define-key helm-find-files-map (kbd "C-<") 'helm-find-files-down-one-level)
+
+  (add-hook 'emacs-lisp-mode-hook
+            (lambda ()
+              (define-key emacs-lisp-mode-map (kbd "C-c C-i")
+                          'helm-lisp-completion-at-point)))
+
+  (when window-system
+    (set-face-attribute 'helm-source-header nil
+                        :underline 'unspecified
+                        :foreground (tango-color 'skyblue-1)
+                        :background 'unspecified)
+    (set-face-attribute 'helm-selection nil
+                        :underline (tango-color 'skyblue-1)
+                        :foreground 'unspecified
+                        :background 'unspecified)
+    (set-face-attributes 'helm-action nil (face-all-attributes 'default))
+    (set-face-attribute 'helm-candidate-number nil
+                        :foreground (tango-color 'chameleon-1)
+                        :background 'unspecified)
+    (set-face-attribute 'helm-M-x-key nil
+                        :foreground (tango-color 'butter-3))
+    (set-face-attribute 'helm-ff-directory nil
+                        :foreground (tango-color 'butter-3)
+                        :background 'unspecified)
+    (set-face-attributes 'helm-ff-file nil (face-all-attributes 'default))
+    (set-face-attribute 'helm-ff-executable nil
+                        :foreground (tango-color 'chameleon-3)
+                        :background 'unspecified)))
+
 ;;;; Auto Complete Mode
 
 (require 'auto-complete-config nil t)
