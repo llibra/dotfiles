@@ -26,6 +26,12 @@
          (attrs (apply 'nconc attrs)))
     (apply 'set-face-attribute face frame attrs)))
 
+(defun true-color-p ()
+  (>= (display-color-cells) 16777216))
+
+(defun face-support/true-color-p ()
+  (and (featurep 'faces) (true-color-p)))
+
 (defconst tango-colors
   '((butter-1 . "fce94f")
     (butter-2 . "edd400")
