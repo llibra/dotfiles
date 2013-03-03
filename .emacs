@@ -8,9 +8,11 @@
 
 (defmacro when-windows (&rest body)
   `(if-windows (progn ,@body)))
+(put 'when-windows 'lisp-indent-function 0)
 
 (defmacro unless-windows (&rest body)
   `(if-windows nil (progn ,@body)))
+(put 'unless-windows 'lisp-indent-function 0)
 
 (defmacro if-x (then &optional else)
   `(if (eq window-system 'x)
@@ -18,6 +20,7 @@
 
 (defmacro when-x (&rest body)
   `(if-x (progn ,@body)))
+(put 'when-x 'lisp-indent-function 0)
 
 (defmacro eval-after-load* (file &rest body)
   `(eval-after-load ,file '(progn ,@body)))
