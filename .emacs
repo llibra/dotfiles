@@ -386,46 +386,50 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 (require 'helm-config nil t)
 
 (when (featurep 'helm-config)
-  (require 'helm)
-  (require 'helm-command)
-  (require 'helm-files)
-
   (helm-mode 1)
 
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "C-x C-f") 'helm-find-files)
   (global-set-key (kbd "C-x b") 'helm-buffers-list)
 
-  (define-key helm-map (kbd "C->") 'helm-execute-persistent-action)
-  (define-key helm-find-files-map (kbd "C-<") 'helm-find-files-down-one-level)
+  (eval-after-load* 'helm
+    (define-key helm-map (kbd "C->") 'helm-execute-persistent-action)
+    (when (face-support/true-color-p)
+      (set-face-attribute 'helm-source-header nil
+                          :underline 'unspecified
+                          :foreground (tango-color 'skyblue-1)
+                          :background 'unspecified)
+      (set-face-attribute 'helm-selection nil
+                          :underline (tango-color 'skyblue-1)
+                          :foreground 'unspecified
+                          :background 'unspecified)
+      (set-face-attribute 'helm-candidate-number nil
+                          :foreground (tango-color 'chameleon-3)
+                          :background 'unspecified)
+      (set-face-attributes 'helm-action nil (face-all-attributes 'default))))
 
-  (add-hook 'emacs-lisp-mode-hook
-            (lambda ()
-              (define-key emacs-lisp-mode-map (kbd "C-c C-i")
-                          'helm-lisp-completion-at-point)))
+  (eval-after-load* 'helm-command
+    (when (face-support/true-color-p)
+      (set-face-attribute 'helm-M-x-key nil
+                          :foreground (tango-color 'butter-3))))
 
-  (when window-system
-    (set-face-attribute 'helm-source-header nil
-                        :underline 'unspecified
-                        :foreground (tango-color 'skyblue-1)
-                        :background 'unspecified)
-    (set-face-attribute 'helm-selection nil
-                        :underline (tango-color 'skyblue-1)
-                        :foreground 'unspecified
-                        :background 'unspecified)
-    (set-face-attributes 'helm-action nil (face-all-attributes 'default))
-    (set-face-attribute 'helm-candidate-number nil
-                        :foreground (tango-color 'chameleon-1)
-                        :background 'unspecified)
-    (set-face-attribute 'helm-M-x-key nil
-                        :foreground (tango-color 'butter-3))
-    (set-face-attribute 'helm-ff-directory nil
-                        :foreground (tango-color 'butter-3)
-                        :background 'unspecified)
-    (set-face-attributes 'helm-ff-file nil (face-all-attributes 'default))
-    (set-face-attribute 'helm-ff-executable nil
-                        :foreground (tango-color 'chameleon-3)
-                        :background 'unspecified)))
+  (eval-after-load* 'helm-files
+    (define-key helm-find-files-map (kbd "C-<") 'helm-find-files-down-one-level)
+    (when (face-support/true-color-p)
+      (set-face-attribute 'helm-ff-directory nil
+                          :foreground (tango-color 'butter-3)
+                          :background 'unspecified)
+      (set-face-attributes 'helm-ff-file nil (face-all-attributes 'default))
+      (set-face-attribute 'helm-ff-executable nil
+                          :foreground (tango-color 'chameleon-3)
+                          :background 'unspecified)))
+
+  (eval-after-load* 'helm-buffers
+    (when (face-support/true-color-p)
+      (set-face-attribute 'helm-buffer-size nil
+                          :underline 'unspecified
+                          :foreground (tango-color 'butter-3)
+                          :background 'unspecified))))
 
 ;;;; Auto Complete Mode
 
@@ -450,6 +454,24 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
           (lambda ()
             (c-set-style "bsd")
             (setq c-basic-offset 2)))
+
+;;;; Emacs Lisp
+
+(when (featurep 'helm-config)
+  (add-hook 'emacs-lisp-mode-hook
+            (lambda ()
+              (define-key emacs-lisp-mode-map (kbd "C-c C-i")
+                'helm-lisp-completion-at-point)))
+
+  (eval-after-load* 'helm-elisp
+    (when (face-support/true-color-p)
+      (set-face-attribute 'helm-lisp-show-completion nil
+                          :underline (tango-color 'skyblue-1)
+                          :foreground (tango-color 'skyblue-1)
+                          :background 'unspecified)
+      (set-face-attribute 'helm-lisp-completion-info nil
+                          :foreground "white"
+                          :background 'unspecified))))
 
 ;;;; Lisp
 
