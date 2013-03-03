@@ -134,7 +134,7 @@
                       :foreground (tango-color 'alminium-6)
                       :background "#ffffff")
   (set-face-attribute 'cursor nil
-                      :background (tango-color 'alminium-2))
+                      :background (tango-color 'alminium-5))
   (set-face-attribute 'mode-line nil
                       :box "#ffffff"
                       :foreground "#ffffff"
