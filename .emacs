@@ -19,6 +19,10 @@
 (defmacro when-x (&rest body)
   `(if-x (progn ,@body)))
 
+(defmacro eval-after-load* (file &rest body)
+  `(eval-after-load ,file '(progn ,@body)))
+(put 'eval-after-load* 'lisp-indent-function 1)
+
 ;;;; Functions
 
 (defun set-face-attributes (face frame attrs)
