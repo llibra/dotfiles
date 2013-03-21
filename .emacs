@@ -308,6 +308,17 @@
                                   :slant 'normal
                                   :foreground (tango-color 'skyblue-1)))))
 
+;;;; Package System
+
+(require 'package)
+
+(when (featurep 'package)
+  (setq package-archives
+        (cons '("marmalade" . "http://marmalade-repo.org/packages/")
+              package-archives))
+
+  (package-initialize))
+
 ;;;; Shell
 
 (require 'term)
