@@ -396,6 +396,7 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
   (global-set-key (kbd "C-x b") 'helm-buffers-list)
 
   (eval-after-load* 'helm
+    (define-key helm-map (kbd "C-h") 'delete-backward-char)
     (define-key helm-map (kbd "C->") 'helm-execute-persistent-action)
     (when (face-support/true-color-p)
       (set-face-attribute 'helm-source-header nil
