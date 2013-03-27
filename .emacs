@@ -246,8 +246,8 @@
 
 ;;;; VIPER
 
-(setq viper-mode t)
-(require 'viper)
+;(setq viper-mode t)
+;(require 'viper)
 
 ;;;; Dired
 
@@ -307,17 +307,6 @@
               (set-face-attribute 'info-node nil
                                   :slant 'normal
                                   :foreground (tango-color 'skyblue-1)))))
-
-;;;; Package System
-
-(require 'package)
-
-(when (featurep 'package)
-  (setq package-archives
-        (cons '("marmalade" . "http://marmalade-repo.org/packages/")
-              package-archives))
-
-  (package-initialize))
 
 ;;;; Shell
 
@@ -395,6 +384,23 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
             (lambda ()
               (grep-apply-setting 'grep-use-null-device nil))))
 
+;;;; Package System
+
+(require 'package nil t)
+
+(when (featurep 'package)
+  (setq package-archives
+        (cons '("marmalade" . "http://marmalade-repo.org/packages/")
+              package-archives))
+  (package-initialize))
+
+;;;; Evil
+
+(require 'evil nil t)
+
+(when (featurep 'evil)
+  (evil-mode 1))
+
 ;;;; Helm
 
 (require 'helm-config nil t)
@@ -453,7 +459,8 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 (when (featurep 'auto-complete)
   (ac-config-default)
   (setq ac-use-fuzzy t
-        ac-disable-faces (cons 'viper-replace-overlay ac-disable-faces))
+        ;ac-disable-faces (cons 'viper-replace-overlay ac-disable-faces))
+        )
   (ac-set-trigger-key "TAB"))
 
 ;;;; YASnippet
@@ -493,7 +500,7 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 (if-windows (setq inferior-lisp-program "sbcl")
             (setq inferior-lisp-program "ccl"))
 
-(add-hook 'lisp-mode-hook 'viper-mode)
+;(add-hook 'lisp-mode-hook 'viper-mode)
 
 (load (expand-file-name "~/quicklisp/slime-helper.el") t)
 
@@ -556,7 +563,7 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 (put 'match 'scheme-indent-function 1)
 (put 'define-method 'scheme-indent-function 2)
 
-(add-hook 'scheme-mode-hook 'viper-mode)
+;(add-hook 'scheme-mode-hook 'viper-mode)
 
 ;;; Remote connection
 
@@ -628,7 +635,7 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 (when-windows
   (setq ocaml-lib-path '("C:/Cygwin/usr/local/ocaml-4.00.0/lib/ocaml")))
 
-(add-hook 'caml-mode-hook 'viper-mode)
+;(add-hook 'caml-mode-hook 'viper-mode)
 
 ;;; Tuareg Mode
 
@@ -655,7 +662,8 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
                 (set-face-attribute 'tuareg-font-lock-operator-face nil
                                     :foreground (tango-color 'alminium-4)))))
 
-  (add-hook 'tuareg-mode-hook 'viper-mode))
+  ;(add-hook 'tuareg-mode-hook 'viper-mode)
+  )
 
 ;;; OCamlSpotter
 
@@ -747,7 +755,7 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
         ("\\.xsl$" . nxml-mode)
         ,@auto-mode-alist))
 
-(add-hook 'nxml-mode-hook 'viper-mode)
+;(add-hook 'nxml-mode-hook 'viper-mode)
 
 ;;;; Emacsclient
 
