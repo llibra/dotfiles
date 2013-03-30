@@ -421,11 +421,11 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
                           :foreground (tango-color 'skyblue-1)
                           :background 'unspecified)
       (set-face-attribute 'helm-selection nil
-                          :underline (tango-color 'skyblue-1)
-                          :foreground 'unspecified
-                          :background 'unspecified)
+                          :underline nil
+                          :foreground "white"
+                          :background (tango-color 'skyblue-1))
       (set-face-attribute 'helm-candidate-number nil
-                          :foreground (tango-color 'chameleon-3)
+                          :foreground (tango-color 'chameleon-1)
                           :background 'unspecified)
       (set-face-attributes 'helm-action nil (face-all-attributes 'default))))
 
