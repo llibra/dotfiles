@@ -453,17 +453,6 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
                           :foreground (tango-color 'butter-3)
                           :background 'unspecified))))
 
-;;;; Auto Complete Mode
-
-(require 'auto-complete-config nil t)
-
-(when (featurep 'auto-complete)
-  (ac-config-default)
-  (setq ac-use-fuzzy t
-        ;ac-disable-faces (cons 'viper-replace-overlay ac-disable-faces))
-        )
-  (ac-set-trigger-key "TAB"))
-
 ;;;; YASnippet
 
 (require 'yasnippet nil t)
