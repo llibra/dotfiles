@@ -810,6 +810,8 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 
 (cd "~")
 
+(load "~/.emacs.d/site.el" t)
+
 (require 'cl)
 
 (define-derived-mode blogger-form-mode nxml-mode "Blogger-Form"  
