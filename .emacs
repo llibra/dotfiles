@@ -435,6 +435,7 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
                           :foreground (tango-color 'butter-3))))
 
   (eval-after-load* 'helm-files
+    (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
     (define-key helm-find-files-map (kbd "C-<") 'helm-find-files-down-one-level)
     (when (face-support/true-color-p)
       (set-face-attribute 'helm-ff-directory nil
