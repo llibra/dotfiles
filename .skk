@@ -4,7 +4,7 @@
 (setq skk-use-jisx0201-input-method t)
 
 (when window-system
-  (setq skk-cursor-latin-color (tango-color 'alminium-2)
+  (setq skk-cursor-latin-color (tango-color 'alminium-5)
         skk-cursor-hiragana-color (tango-color 'scarletred-1)
         skk-cursor-katakana-color (tango-color 'chameleon-2)
         skk-cursor-jisx0201-color (tango-color 'plum-1)
