@@ -399,7 +399,10 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 (require 'evil nil t)
 
 (when (featurep 'evil)
-  (evil-mode 1))
+  (evil-mode 1)
+
+  ;; For prevent conflict of changing cursor color with SKK.
+  (setq evil-default-cursor t))
 
 ;;;; Helm
 
