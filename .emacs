@@ -77,12 +77,11 @@
 
 (set-language-environment "Japanese")
 
-(set-default-coding-systems 'utf-8-unix)
-(set-clipboard-coding-system (if-windows 'sjis-dos 'utf-8-unix))
-
-(when-windows
-  (set-w32-system-coding-system 'sjis-dos))
-
+(if-windows (progn
+              (set-default-coding-systems 'cp932)
+              (setq-default buffer-file-coding-system 'utf-8-unix))
+            (set-default-coding-systems 'utf-8))
+ 
 ;;;; Variables
 
 (setq inhibit-startup-screen t
