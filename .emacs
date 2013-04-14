@@ -443,6 +443,17 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
                           :foreground (tango-color 'butter-3)
                           :background 'unspecified))))
 
+;;;; Semantic
+
+(setq semantic-default-submodes
+      '(global-semantic-idle-scheduler-mode
+        global-semanticdb-minor-mode
+        global-semantic-idle-summary-mode
+        global-semantic-idle-completions-mode
+        global-semantic-mru-bookmark-mode))
+
+(semantic-mode 1)
+
 ;;;; YASnippet
 
 (require 'yasnippet nil t)
