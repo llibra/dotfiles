@@ -703,11 +703,6 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 
 ;;;; Java
 
-(require 'ajc-java-complete-config nil t)
-
-(when (featurep 'ajc-java-complete)
-  (add-hook 'java-mode-hook 'ajc-java-complete-mode))
-
 ;;;; TRAMP
 
 (require 'tramp)
