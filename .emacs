@@ -99,20 +99,8 @@
 
 (when window-system
   ;; Font
-  (let ((base-font (if-windows "M+ 1m-9" "Meguri-10")))
+  (let ((base-font (if-windows "M+ 1m regular-9" "Meguri-10")))
     (create-fontset-from-ascii-font base-font nil "mine"))
-
-  (when-windows
-    (mapc (lambda (target)
-            (set-fontset-font "fontset-mine"
-                              target
-                              (font-spec :family "Meguri")
-                              nil
-                              'append))
-          '(katakana-jisx0201 japanese-jisx0213.2004-1 japanese-jisx0213-2)))
-
-  ;; General Punctuation
-  (set-fontset-font "fontset-mine" '(#x2000 . #x206f) "M+ 1m")
 
   ;; Frame
   (setq default-frame-alist
