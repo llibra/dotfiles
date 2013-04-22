@@ -712,6 +712,10 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
         (ocamlspot-message-add (format "ERROR: source file %s was not found" path))
         nil))))
 
+;;;; Scala
+
+(require 'scala-mode-auto nil t)
+
 ;;;; Java
 
 ;;;; TRAMP
