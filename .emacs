@@ -388,6 +388,8 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
 (when (featurep 'evil)
   (evil-mode 1)
 
+  (evil-set-initial-state 'term-mode 'emacs)
+
   ;; For prevent conflict of changing cursor color with SKK.
   (setq evil-default-cursor t))
 
