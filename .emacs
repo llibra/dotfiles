@@ -73,6 +73,23 @@
     (unless entry (error "%s is unknown color name." name))
     (format "#%s" (cdr entry))))
 
+;;;; Utilities
+
+(defvar alternate-program-table
+  (make-hash-table :test 'equal))
+
+(defmacro define-alternate-program (program alt)
+  `(puthash ,program ,alt alternate-program-table))
+
+(defun alternate-program (program)
+  (gethash program alternate-program-table))
+
+(defadvice start-process (around kludge-for-hard-coding (name buffer program &rest program-args) activate)
+  (let* ((alternate (alternate-program program))
+         (program (or (if (consp alternate) (car alternate) alternate) program))
+         (program-args (if (consp alternate) (append (cdr alternate) program-args) program-args)))
+    ad-do-it))
+
 ;;;; Languages and encodings
 
 (set-language-environment "Japanese")
@@ -302,43 +319,14 @@
 (setq explicit-shell-file-name "zsh")
 
 (when-windows
-  ;; Kludge. term-exec-1 in lisp/term.el fails on Windows due to hard coding.
-  (defun term-exec-1 (name buffer command switches)
-    ;; We need to do an extra (fork-less) exec to run stty.
-    ;; (This would not be needed if we had suitable Emacs primitives.)
-    ;; The 'if ...; then shift; fi' hack is because Bourne shell
-    ;; loses one arg when called with -c, and newer shells (bash,  ksh) don't.
-    ;; Thus we add an extra dummy argument "..", and then remove it.
-    (let ((process-environment
-           (nconc
-            (list
-             (format "TERM=%s" term-term-name)
-             (format "TERMINFO=%s" data-directory)
-             (format term-termcap-format "TERMCAP="
-                     term-term-name term-height term-width)
-             ;; We are going to get rid of the binding for EMACS,
-             ;; probably in Emacs 23, because it breaks
-             ;; `./configure' of some packages that expect it to
-             ;; say where to find EMACS.
-             (format "EMACS=%s (term:%s)" emacs-version term-protocol-version)
-             (format "INSIDE_EMACS=%s,term:%s" emacs-version term-protocol-version)
-             (format "LINES=%d" term-height)
-             (format "COLUMNS=%d" term-width))
-            process-environment))
-          (process-connection-type t)
-          ;; We should suppress conversion of end-of-line format.
-          (inhibit-eol-conversion t)
-          ;; The process's output contains not just chars but also binary
-          ;; escape codes, so we need to see the raw output.  We will have to
-          ;; do the decoding by hand on the parts that are made of chars.
-          (coding-system-for-read 'binary))
-      (apply 'start-process name buffer
-             "f_sh" "-c"
-             (format "stty -nl echo rows %d columns %d sane 2>/dev/null;\
-if [ $1 = .. ]; then shift; fi; exec \"$@\""
-                     term-height term-width)
-             ".."
-             command switches))))
+  (define-alternate-program "/bin/sh" '("fakecygpty" "/bin/sh")))
+
+;; Kludge for term.el.
+;; It refers not process-coding-system but locale-coding-system.
+(add-hook 'term-mode-hook
+          (lambda ()
+            (make-local-variable locale-coding-system)
+            (setq locale-coding-system 'utf-8)))
 
 (when-windows
   (add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m))
