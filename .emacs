@@ -715,6 +715,12 @@
         (cons '("\\.java$" . malabar-mode)
               auto-mode-alist)))
 
+;;;; SQL
+
+(eval-after-load* 'sql
+  (when-windows
+    (setq sql-mysql-options '("-C" "-t" "-f" "-n"))))
+
 ;;;; TRAMP
 
 (require 'tramp)
