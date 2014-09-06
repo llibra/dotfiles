@@ -434,6 +434,13 @@
                           :foreground (tango-color 'butter-3)
                           :background 'unspecified))))
 
+;;;; Auto-Complete
+
+(require 'auto-complete-config nil t)
+
+(when (featurep 'auto-complete-config)
+  (ac-config-default))
+
 ;;;; Semantic
 
 (setq semantic-default-submodes
