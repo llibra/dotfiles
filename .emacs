@@ -365,8 +365,9 @@
 
 (when (featurep 'package)
   (setq package-archives
-        (cons '("marmalade" . "http://marmalade-repo.org/packages/")
-              package-archives))
+        `(("marmalade" . "http://marmalade-repo.org/packages/")
+          ("melpa" . "http://melpa.milkbox.net/packages/")
+          ,@package-archives))
   (package-initialize))
 
 ;;;; Evil
