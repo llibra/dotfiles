@@ -702,6 +702,13 @@
         (ocamlspot-message-add (format "ERROR: source file %s was not found" path))
         nil))))
 
+;;;; Erlang
+
+(setq erlang-root-dir "C:/Erlang/5.10.4")
+(setq load-path (cons (format "%s/lib/tools-2.6.13/emacs" erlang-root-dir) load-path))
+
+(require 'erlang-start nil t)
+
 ;;;; Scala
 
 (require 'scala-mode-auto nil t)
