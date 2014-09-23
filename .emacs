@@ -338,14 +338,6 @@
                                   :weight 'normal
                                   :foreground (tango-color 'skyblue-2)))))
 
-;;;; cygwin-mount.el
-
-(when-windows
-  (require 'cygwin-mount nil t)
-
-  (when (featurep 'cygwin-mount-autoloads)
-    (cygwin-mount-activate)))
-
 ;;;; Compilation
 
 (when window-system
@@ -377,6 +369,13 @@
           ("melpa" . "http://melpa.milkbox.net/packages/")
           ,@package-archives))
   (package-initialize))
+
+;;;; cygwin-mount.el
+
+(require 'cygwin-mount nil t) 
+
+(when (featurep 'cygwin-mount-autoloads)
+  (cygwin-mount-activate))
 
 ;;;; Evil
 
