@@ -434,6 +434,9 @@
                           :foreground (tango-color 'butter-3)
                           :background 'unspecified))))
 
+(when (featurep 'helm-config)
+  (require 'helm-ls-git))
+
 ;;;; Auto-Complete
 
 (require 'auto-complete-config nil t)
