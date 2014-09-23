@@ -469,6 +469,10 @@
 (when (featurep 'yasnippet)
   (yas-global-mode 1))
 
+;;;; Git
+
+(require 'magit nil t)
+
 ;;;; C
 
 (add-hook 'c-mode-common-hook
