@@ -746,6 +746,11 @@
 
 ;;;; SQL
 
+(require 'edbi nil t)
+
+(when (featurep 'edbi)
+  (autoload 'edbi:open-db-viewer "edbi"))
+
 (eval-after-load* 'sql
   (when-windows
     (setq sql-mysql-options '("-C" "-t" "-f" "-n"))))
