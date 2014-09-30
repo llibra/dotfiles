@@ -746,10 +746,7 @@
 
 ;;;; SQL
 
-(require 'edbi nil t)
-
-(when (featurep 'edbi)
-  (autoload 'edbi:open-db-viewer "edbi"))
+(autoload 'edbi:open-db-viewer "edbi" nil t)
 
 (eval-after-load* 'sql
   (when-windows
