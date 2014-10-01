@@ -473,6 +473,28 @@
 
 (require 'magit nil t)
 
+(when (featurep 'magit)
+  (set-face-attribute 'magit-diff-hunk-header nil
+                      :foreground (tango-color 'alminium-3)
+                      :background (tango-color 'alminium-1))
+  (set-face-attribute 'magit-diff-file-header nil
+                      :foreground (tango-color 'alminium-3)
+                      :background (tango-color 'alminium-1)
+                      :weight 'normal)
+  (set-face-attribute 'magit-diff-add nil
+                      :foreground (tango-color 'chameleon-3)
+                      :background "white")
+  (set-face-attribute 'magit-diff-del nil
+                      :foreground (tango-color 'scarletred-1)
+                      :background "white")
+  (set-face-attribute 'magit-diff-none nil
+                      :foreground (tango-color 'alminium-4)
+                      :background "white")
+  (set-face-attribute 'magit-item-highlight nil
+                      :foreground (tango-color 'alminium-4)
+                      :background "white"))
+
+
 ;;;; C
 
 (add-hook 'c-mode-common-hook
