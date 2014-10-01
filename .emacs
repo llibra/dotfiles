@@ -474,6 +474,9 @@
 (require 'magit nil t)
 
 (when (featurep 'magit)
+  (set-face-attribute 'magit-section-title nil
+                      :foreground (tango-color 'skyblue-2)
+                      :background "white")
   (set-face-attribute 'magit-diff-hunk-header nil
                       :foreground (tango-color 'alminium-3)
                       :background (tango-color 'alminium-1))
@@ -492,7 +495,31 @@
                       :background "white")
   (set-face-attribute 'magit-item-highlight nil
                       :foreground (tango-color 'alminium-4)
-                      :background "white"))
+                      :background "white")
+  (set-face-attribute 'magit-branch nil
+                      :foreground (tango-color 'chocolate-2)
+                      :background nil)
+  (set-face-attribute 'magit-log-author nil
+                      :foreground (tango-color 'chameleon-3)
+                      :background nil)
+  (set-face-attribute 'magit-log-sha1 nil
+                      :foreground (tango-color 'butter-3)
+                      :background nil)
+  (set-face-attribute 'magit-log-head-label-head nil
+                      :foreground (tango-color 'scarletred-1)
+                      :background "white"
+                      :weight 'normal
+                      :box t)
+  (set-face-attribute 'magit-log-head-label-local nil
+                      :foreground (tango-color 'skyblue-2)
+                      :background "white"
+                      :weight 'normal
+                      :box t)
+  (set-face-attribute 'magit-log-head-label-remote nil
+                      :foreground (tango-color 'chameleon-3)
+                      :background "white"
+                      :weight 'normal
+                      :box t))
 
 
 ;;;; C
