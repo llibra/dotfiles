@@ -185,6 +185,21 @@
                       :background 'unspecified
                       :underline t))
 
+;;;; Ansi Color
+
+(eval-after-load* 'ansi-color
+  (setq ansi-color-names-vector
+        (vector "black"
+                (tango-color 'scarletred-1)
+                (tango-color 'chameleon-3)
+                (tango-color 'butter-1)
+                (tango-color 'skyblue-2)
+                (tango-color 'plum-1)
+                (tango-color 'skyblue-1)
+                "white")
+        ansi-color-map
+        (ansi-color-make-color-map)))
+
 ;;;; Key bindings
 
 (global-set-key "\C-h" 'delete-backward-char)
@@ -526,7 +541,6 @@
                       :background "white"
                       :weight 'normal
                       :box t))
-
 
 ;;;; C
 
