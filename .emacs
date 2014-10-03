@@ -501,7 +501,10 @@
                       :background "white")
   (set-face-attribute 'magit-branch nil
                       :foreground (tango-color 'chocolate-2)
-                      :background nil)
+                      :background 'unspecified)
+  (set-face-attribute 'magit-tag nil
+                      :foreground (tango-color 'chocolate-1)
+                      :background 'unspecified)
   (set-face-attribute 'magit-log-author nil
                       :foreground (tango-color 'chameleon-3)
                       :background nil)
