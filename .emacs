@@ -471,6 +471,9 @@
 
 ;;;; Git
 
+(setq process-coding-system-alist
+      (cons '("git" utf-8 . utf-8) process-coding-system-alist))
+
 (require 'magit nil t)
 
 (when (featurep 'magit)
