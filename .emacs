@@ -454,7 +454,17 @@
       (set-face-attribute 'helm-buffer-size nil
                           :underline 'unspecified
                           :foreground (tango-color 'butter-3)
-                          :background 'unspecified))))
+                          :background 'unspecified)))
+
+  (eval-after-load* 'helm-regexp
+    (when (face-support/true-color-p)
+      (set-face-attribute 'helm-moccur-buffer nil
+                          :foreground (tango-color 'chameleon-3))))
+
+  (eval-after-load* 'helm-grep
+    (when (face-support/true-color-p)
+      (set-face-attribute 'helm-grep-lineno nil
+                          :foreground (tango-color 'butter-3)))))
 
 (when (featurep 'helm-config)
   (require 'helm-ls-git))
