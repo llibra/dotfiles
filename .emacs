@@ -317,15 +317,15 @@
   (add-hook 'Info-mode-hook
             (lambda ()
               (set-face-attribute 'info-header-xref nil
-                                  :foreground (tango-color 'skyblue-1))
+                                  :foreground (tango-color 'skyblue-2))
               (set-face-attribute 'info-xref nil
                                   :underline t
-                                  :foreground (tango-color 'skyblue-1))
+                                  :foreground (tango-color 'skyblue-2))
               (set-face-attribute 'info-xref-visited nil
                                   :foreground (tango-color 'plum-1))
               (set-face-attribute 'info-node nil
                                   :slant 'normal
-                                  :foreground (tango-color 'skyblue-1)))))
+                                  :foreground (tango-color 'skyblue-2)))))
 
 ;;;; Shell
 
@@ -421,12 +421,12 @@
     (when (face-support/true-color-p)
       (set-face-attribute 'helm-source-header nil
                           :underline 'unspecified
-                          :foreground (tango-color 'skyblue-1)
+                          :foreground (tango-color 'skyblue-2)
                           :background 'unspecified)
       (set-face-attribute 'helm-selection nil
                           :underline nil
                           :foreground "white"
-                          :background (tango-color 'skyblue-1))
+                          :background (tango-color 'skyblue-2))
       (set-face-attribute 'helm-candidate-number nil
                           :foreground (tango-color 'chameleon-1)
                           :background 'unspecified)
@@ -570,8 +570,8 @@
   (eval-after-load* 'helm-elisp
     (when (face-support/true-color-p)
       (set-face-attribute 'helm-lisp-show-completion nil
-                          :underline (tango-color 'skyblue-1)
-                          :foreground (tango-color 'skyblue-1)
+                          :underline (tango-color 'skyblue-2)
+                          :foreground (tango-color 'skyblue-2)
                           :background 'unspecified)
       (set-face-attribute 'helm-lisp-completion-info nil
                           :foreground "white"
