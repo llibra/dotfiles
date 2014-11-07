@@ -596,9 +596,6 @@
         slime-lisp-implementations `((ccl ("wx86cl"))
                                      (sbcl ("sbcl"))
                                      (clisp ("clisp"))))
-  (add-hook 'slime-connected-hook
-            (lambda ()
-              (slime-repl-set-package ":llibra")))
 
   (when window-system
     (add-hook 'slime-mode-hook
