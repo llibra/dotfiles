@@ -406,6 +406,9 @@
 
 ;;;; Helm
 
+(setq process-coding-system-alist
+      (cons '("es\\.exe$" utf-8-dos . utf-8-unix) process-coding-system-alist))
+
 (require 'helm-config nil t)
 
 (when (featurep 'helm-config)
