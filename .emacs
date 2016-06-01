@@ -215,9 +215,10 @@
 
 ;;;; Abbrev
 
-(setq abbrev-file-name "~/.abbrev_defs"
-      save-abbrevs t)
-(quietly-read-abbrev-file)
+(setq save-abbrevs t)
+
+(when (file-exists-p abbrev-file-name)
+  (quietly-read-abbrev-file))
 
 ;;;; Font lock
 
