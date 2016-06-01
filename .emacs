@@ -121,7 +121,7 @@
 
   ;; Frame
   (setq default-frame-alist
-        `((width . ,(if-x 60 120))
+        `((width . 120)
           (height . 36)
           (font . "fontset-mine")
           ,@default-frame-alist))
