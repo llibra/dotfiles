@@ -116,8 +116,12 @@
 
 (when window-system
   ;; Font
-  (let ((base-font (if-windows "M+ 1m-9" "M+ 1m-12")))
-    (create-fontset-from-ascii-font base-font nil "mine"))
+  (let* ((family "M+ 1m")
+        (base-font (if-windows (concat family "-9") (concat family "-12"))))
+    (create-fontset-from-ascii-font base-font nil "mine")
+    (set-fontset-font "fontset-mine" 'latin-jisx0201 (font-spec :family family))
+    (set-fontset-font "fontset-mine" 'katakana-jisx0201 (font-spec :family family))
+    (set-fontset-font "fontset-mine" 'japanese-jisx0208 (font-spec :family family)))
 
   ;; Frame
   (setq default-frame-alist
