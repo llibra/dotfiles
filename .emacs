@@ -116,7 +116,7 @@
 
 (when window-system
   ;; Font
-  (let ((base-font (if-windows "M+ 1m regular-9" "Meguri-10")))
+  (let ((base-font (if-windows "M+ 1m-9" "M+ 1m-12")))
     (create-fontset-from-ascii-font base-font nil "mine"))
 
   ;; Frame
