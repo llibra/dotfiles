@@ -375,6 +375,10 @@
             (lambda ()
               (grep-apply-setting 'grep-use-null-device nil))))
 
+;;;; SKK
+
+(global-set-key (kbd "C-x C-j") 'skk-mode)
+
 ;;;; Package System
 
 (require 'package nil t)
