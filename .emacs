@@ -390,6 +390,7 @@
 (when (featurep 'package)
   (setq package-archives
         `(("marmalade" . "https://marmalade-repo.org/packages/")
+          ("melpa-stable" . "http://stable.melpa.org/packages/")
           ("melpa" . "http://melpa.milkbox.net/packages/")
           ,@package-archives))
   (package-initialize))
