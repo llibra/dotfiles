@@ -592,19 +592,15 @@
 
 ;;;; Lisp
 
-(if-windows (setq inferior-lisp-program "sbcl")
-            (setq inferior-lisp-program "ccl"))
-
-;(add-hook 'lisp-mode-hook 'viper-mode)
-
-(load (expand-file-name "~/quicklisp/slime-helper.el") t)
+(setq inferior-lisp-program "sbcl")
 
 (when (featurep 'slime-autoloads)
+  (slime-setup '(slime-fancy))
+
   (add-hook 'lisp-mode-hook 'slime-mode)
 
   (setq slime-net-coding-system 'utf-8-unix
-        slime-lisp-implementations `((ccl ("wx86cl"))
-                                     (sbcl ("sbcl"))
+        slime-lisp-implementations `((sbcl ("sbcl"))
                                      (clisp ("clisp"))))
 
   (when window-system
