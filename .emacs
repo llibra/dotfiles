@@ -572,6 +572,12 @@
             (c-set-style "bsd")
             (setq c-basic-offset 2)))
 
+;;;; Perl
+
+(let ((perl5lib (getenv "PERL5LIB")))
+  (setenv "PERL5LIB" (concat "~/perl5/lib/perl5" perl5lib))
+  (setenv "PERL_CPANM_OPT" "--local-lib=~/perl5"))
+
 ;;;; Emacs Lisp
 
 (when (featurep 'helm-config)
