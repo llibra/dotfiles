@@ -22,6 +22,14 @@
   `(if-x (progn ,@body)))
 (put 'when-x 'lisp-indent-function 0)
 
+(defmacro if-mac (then &optional else)
+  `(if (eq window-system 'ns)
+       ,then ,else))
+
+(defmacro when-mac (&rest body)
+  `(if-mac (progn ,@body)))
+(put 'when-mac 'lisp-indent-function 0)
+
 (defmacro eval-after-load* (file &rest body)
   `(eval-after-load ,file '(progn ,@body)))
 (put 'eval-after-load* 'lisp-indent-function 1)
@@ -496,6 +504,7 @@
   (eval-after-load* 'helm-files
     (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
     (define-key helm-find-files-map (kbd "C-<") 'helm-find-files-up-one-level)
+
     (when (face-support/true-color-p)
       (set-face-attribute 'helm-ff-directory nil
                           :foreground (tango-color 'butter-3)
