@@ -514,29 +514,49 @@
 (require 'magit nil t)
 
 (when (featurep 'magit)
-  (set-face-attribute 'magit-section-title nil
-                      :foreground (tango-color 'skyblue-2)
+  (set-face-attribute 'magit-section-heading nil
+                      :foreground (tango-color 'skyblue-3)
                       :background "white")
-  (set-face-attribute 'magit-diff-hunk-header nil
+  (set-face-attribute 'magit-section-highlight nil
+                      :foreground 'unspecified
+                      :background (tango-color 'alminium-1))
+  (set-face-attribute 'magit-diff-hunk-heading nil
                       :foreground (tango-color 'alminium-3)
                       :background (tango-color 'alminium-1))
-  (set-face-attribute 'magit-diff-file-header nil
+  (set-face-attribute 'magit-diff-file-heading nil
                       :foreground (tango-color 'alminium-3)
                       :background (tango-color 'alminium-1)
                       :weight 'normal)
-  (set-face-attribute 'magit-diff-add nil
+  (set-face-attribute 'magit-diff-added nil
                       :foreground (tango-color 'chameleon-3)
-                      :background "white")
-  (set-face-attribute 'magit-diff-del nil
+                      :background 'unspecified)
+  (set-face-attribute 'magit-diff-added-highlight nil
+                      :foreground (tango-color 'chameleon-3)
+                      :background 'unspecified)
+  (set-face-attribute 'magit-diff-removed nil
                       :foreground (tango-color 'scarletred-1)
-                      :background "white")
-  (set-face-attribute 'magit-diff-none nil
+                      :background 'unspecified)
+  (set-face-attribute 'magit-diff-removed-highlight nil
+                      :foreground (tango-color 'scarletred-1)
+                      :background 'unspecified)
+  (set-face-attribute 'magit-diff-context nil
                       :foreground (tango-color 'alminium-4)
-                      :background "white")
-  (set-face-attribute 'magit-item-highlight nil
+                      :background 'unspecified)
+  (set-face-attribute 'magit-diff-context-highlight nil
                       :foreground (tango-color 'alminium-4)
-                      :background "white")
-  (set-face-attribute 'magit-branch nil
+                      :background 'unspecified)
+  (set-face-attribute 'magit-diff-whitespace-warning nil
+                      :foreground 'unspecified
+                      :background (tango-color 'scarletred-1))
+  (set-face-attribute 'magit-branch-current nil
+                      :foreground (tango-color 'skyblue-3)
+                      :background 'unspecified
+                      :box nil
+                      :weight 'bold)
+  (set-face-attribute 'magit-branch-local nil
+                      :foreground (tango-color 'skyblue-3)
+                      :background 'unspecified)
+  (set-face-attribute 'magit-branch-remote nil
                       :foreground (tango-color 'chocolate-2)
                       :background 'unspecified)
   (set-face-attribute 'magit-tag nil
@@ -545,24 +565,9 @@
   (set-face-attribute 'magit-log-author nil
                       :foreground (tango-color 'chameleon-3)
                       :background nil)
-  (set-face-attribute 'magit-log-sha1 nil
+  (set-face-attribute 'magit-hash nil
                       :foreground (tango-color 'butter-3)
-                      :background nil)
-  (set-face-attribute 'magit-log-head-label-head nil
-                      :foreground (tango-color 'scarletred-1)
-                      :background "white"
-                      :weight 'normal
-                      :box t)
-  (set-face-attribute 'magit-log-head-label-local nil
-                      :foreground (tango-color 'skyblue-2)
-                      :background "white"
-                      :weight 'normal
-                      :box t)
-  (set-face-attribute 'magit-log-head-label-remote nil
-                      :foreground (tango-color 'chameleon-3)
-                      :background "white"
-                      :weight 'normal
-                      :box t))
+                      :background nil))
 
 ;;;; C
 
