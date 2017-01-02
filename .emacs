@@ -126,7 +126,7 @@
   ;; Font
   (let* ((family "M+ 1m")
          (size (if-windows "9" "12"))
-         (style (if-windows ":weight=normal:slant=normal" ""))
+         (style (if-windows "" ":weight=normal:slant=normal"))
          (base-font (concat family "-" size style)))
     (create-fontset-from-ascii-font base-font nil "mine")
     (let ((spec (font-spec :family family :weight 'normal :slant 'normal)))
