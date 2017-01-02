@@ -547,6 +547,17 @@
 (when (featurep 'yasnippet)
   (yas-global-mode 1))
 
+;;;; Projectile
+
+(when (package-installed-p 'projectile)
+  (projectile-global-mode))
+
+(when (package-installed-p 'helm-projectile)
+  (add-hook 'projectile-mode-hook
+            (lambda ()
+              (setq projectile-completion-system 'helm)
+              (helm-projectile-on))))
+
 ;;;; Git
 
 (setq process-coding-system-alist
@@ -622,6 +633,16 @@
 (let ((perl5lib (getenv "PERL5LIB")))
   (setenv "PERL5LIB" (concat "~/perl5/lib/perl5" perl5lib))
   (setenv "PERL_CPANM_OPT" "--local-lib=~/perl5"))
+
+;;;; Ruby
+
+(with-eval-after-load 'ruby-mode
+  (add-hook 'ruby-mode-hook
+            (lambda ()
+              (setq ruby-insert-encoding-magic-comment nil))))
+
+(when (package-installed-p 'projectile-rails)
+  (projectile-rails-global-mode))
 
 ;;;; Emacs Lisp
 
