@@ -915,7 +915,11 @@
 
 (autoload 'edbi:open-db-viewer "edbi" nil t)
 
-(eval-after-load* 'sql
+(with-eval-after-load 'sql
+  (add-hook 'sql-interactive-mode-hook
+            (lambda ()
+              (setq truncate-lines t)))
+
   (when-windows
     (setq sql-mysql-options '("-C" "-t" "-f" "-n"))))
 
