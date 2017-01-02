@@ -911,6 +911,15 @@
             (lambda ()
               (setq js-indent-level 2))))
 
+;;;; web-mode.el
+
+(when (package-installed-p 'web-mode)
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (setq web-mode-markup-indent-offset 2)
+              (setq web-mode-css-indent-offset 2)
+              (setq web-mode-code-indent-offset 2))))
+
 ;;;; SQL
 
 (autoload 'edbi:open-db-viewer "edbi" nil t)
