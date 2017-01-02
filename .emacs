@@ -335,6 +335,17 @@
                                   :slant 'normal
                                   :foreground (tango-color 'skyblue-2)))))
 
+;;;; Package System
+
+(require 'package nil t)
+
+(when (featurep 'package)
+  (setq package-archives
+        `(("melpa-stable" . "https://stable.melpa.org/packages/")
+          ("melpa" . "https://melpa.org/packages/")
+          ,@package-archives))
+  (package-initialize))
+
 ;;;; Shell
 
 (require 'term)
@@ -391,17 +402,6 @@
 
 (add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
 (add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup)
-
-;;;; Package System
-
-(require 'package nil t)
-
-(when (featurep 'package)
-  (setq package-archives
-        `(("melpa-stable" . "https://stable.melpa.org/packages/")
-          ("melpa" . "https://melpa.org/packages/")
-          ,@package-archives))
-  (package-initialize))
 
 ;;;; cygwin-mount.el
 
