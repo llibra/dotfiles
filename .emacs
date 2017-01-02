@@ -361,6 +361,9 @@
                                   :weight 'normal
                                   :foreground (tango-color 'skyblue-2)))))
 
+(when (package-installed-p 'exec-path-from-shell)
+  (exec-path-from-shell-initialize))
+
 ;;;; Compilation
 
 (when window-system
