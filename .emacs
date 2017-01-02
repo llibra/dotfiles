@@ -466,7 +466,11 @@
 
   (eval-after-load* 'helm
     (define-key helm-map (kbd "C-h") 'delete-backward-char)
-    (define-key helm-map (kbd "C->") 'helm-execute-persistent-action)
+
+    ;; In default, C-j is bound to helm-execute-persistent-action.
+    ;; For SKK, unbind it.
+    (define-key helm-map (kbd "C-j") nil)
+
     (when (face-support/true-color-p)
       (set-face-attribute 'helm-source-header nil
                           :underline 'unspecified
