@@ -413,6 +413,37 @@
 
   (evil-mode 1))
 
+;;;; Company
+
+(global-company-mode)
+
+(add-hook 'company-mode-hook
+          (lambda ()
+            (set-face-attribute 'company-scrollbar-bg nil
+                                :background (tango-color 'alminium-2)
+                                :foreground 'unspecified)
+            (set-face-attribute 'company-scrollbar-fg nil
+                                :background (tango-color 'alminium-4)
+                                :foreground 'unspecified)
+            (set-face-attribute 'company-preview nil
+                                :background (tango-color 'skyblue-2)
+                                :foreground 'unspecified)
+            (set-face-attribute 'company-tooltip nil
+                                :background (tango-color 'alminium-1)
+                                :foreground (tango-color 'alminium-6))
+            (set-face-attribute 'company-tooltip-selection nil
+                                :background (tango-color 'skyblue-2)
+                                :foreground 'unspecified)
+            (set-face-attribute 'company-tooltip-annotation nil
+                                :background 'unspecified
+                                :foreground (tango-color 'alminium-4))
+            (set-face-attribute 'company-tooltip-common nil
+                                :background 'unspecified
+                                :foreground (tango-color 'skyblue-3))
+            (set-face-attribute 'company-tooltip-common-selection nil
+                                :background 'unspecified
+                                :foreground (tango-color 'skyblue-1))))
+
 ;;;; Helm
 
 (setq process-coding-system-alist
