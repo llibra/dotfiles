@@ -990,3 +990,8 @@
             (">" . "&gt;")
             ("&" . "&amp;"))
           :initial-value x))
+
+;;; Custom
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
