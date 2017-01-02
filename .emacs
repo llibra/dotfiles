@@ -904,6 +904,13 @@
         (cons '("\\.java$" . malabar-mode)
               auto-mode-alist)))
 
+;;;; JavaScript
+
+(with-eval-after-load 'js
+  (add-hook 'js-mode-hook
+            (lambda ()
+              (setq js-indent-level 2))))
+
 ;;;; SQL
 
 (autoload 'edbi:open-db-viewer "edbi" nil t)
