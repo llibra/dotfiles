@@ -386,6 +386,9 @@
 
 (global-set-key (kbd "C-x C-j") 'skk-mode)
 
+(add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
+(add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup)
+
 ;;;; Package System
 
 (require 'package nil t)
