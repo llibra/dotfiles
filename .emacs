@@ -1018,6 +1018,14 @@
                                   :underline nil
                                   :foreground (tango-color 'chameleon-3)))))
 
+;;;; powerline
+
+(use-package powerline
+  :load-path "site-lisp/powerline/"
+  :config
+  (powerline-default-theme)
+  (setq ns-use-srgb-colorspace nil))
+
 ;;;; Misc
 
 (cd "~")
