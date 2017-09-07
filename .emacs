@@ -125,7 +125,7 @@
 (when window-system
   ;; Font
   (let* ((family "M+ 1m")
-         (size (if-windows "9" "12"))
+         (size (if-windows "9" "14"))
          (style (if-windows "" ":weight=normal:slant=normal"))
          (base-font (concat family "-" size style)))
     (create-fontset-from-ascii-font base-font nil "mine")
@@ -136,8 +136,8 @@
 
   ;; Frame
   (setq default-frame-alist
-        `((width . 120)
-          (height . 36)
+        `((width . 160)
+          (height . 32)
           (font . "fontset-mine")
           ,@default-frame-alist))
 
