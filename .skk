@@ -1,7 +1,8 @@
 ;;;; -*-Emacs-Lisp-*-
 ;;;; .skk - SKK initialization file
 
-(setq skk-use-jisx0201-input-method t)
+(setq skk-large-jisyo "~/.emacs.d/skk-get-jisyo/SKK-JISYO.L"
+      skk-use-jisx0201-input-method t)
 
 (when window-system
   (setq skk-cursor-latin-color (tango-color 'alminium-5)
