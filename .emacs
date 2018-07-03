@@ -222,8 +222,8 @@
 
 (use-package ample-theme
   :init (progn
-          (load-theme 'ample-flat t t)
-          (enable-theme 'ample-flat))
+          (load-theme 'ample t t)
+          (enable-theme 'ample))
   :defer t)
 
 ;;;; Shell
