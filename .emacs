@@ -149,56 +149,6 @@
 (line-number-mode t)
 (column-number-mode t)
 
-;;;; Faces
-
-(when window-system
-  (set-face-attribute 'default nil
-                      :foreground (tango-color 'alminium-6)
-                      :background "#ffffff")
-  (set-face-attribute 'cursor nil
-                      :background (tango-color 'alminium-5))
-  (set-face-attribute 'mode-line nil
-                      :box "#ffffff"
-                      :foreground "#ffffff"
-                      :background (tango-color 'alminium-5))
-  (set-face-attribute 'mode-line-buffer-id nil
-                      :weight 'normal)
-  (set-face-attribute 'mode-line-highlight nil
-                      :box nil; "#ffffff"
-                      :background (tango-color 'alminium-6))
-  (set-face-attribute 'mode-line-inactive nil
-                      :box "#ffffff"
-                      :foreground "#ffffff"
-                      :background (tango-color 'alminium-3))
-  (set-face-attribute 'minibuffer-prompt nil
-                      :foreground (tango-color 'skyblue-2))
-  (set-face-attribute 'fringe nil
-                      :foreground "#ffffff"
-                      :background (tango-color 'alminium-2))
-  (set-face-attribute 'header-line nil
-                      :box "#ffffff"
-                      :foreground "#ffffff"
-                      :background (tango-color 'alminium-4))
-  (set-face-attribute 'highlight nil
-                      :underline t
-                      :foreground (tango-color 'scarletred-1)
-                      :background 'unspecified)
-  (set-face-attribute 'lazy-highlight nil
-                      :underline t
-                      :foreground (tango-color 'scarletred-1)
-                      :background 'unspecified)
-  (set-face-attribute 'region nil
-                      :foreground "#ffffff"
-                      :background (tango-color 'alminium-3))
-  (set-face-attribute 'isearch nil
-                      :weight 'normal
-                      :underline t
-                      :foreground (tango-color 'scarletred-1)
-                      :background 'unspecified)
-  (set-face-attribute 'match nil
-                      :foreground (tango-color 'scarletred-1)
-                      :background 'unspecified
-                      :underline t))
 
 ;;;; Ansi Color
 
@@ -239,45 +189,9 @@
 
 (global-font-lock-mode t)
 
-(when window-system
-  (add-hook 'font-lock-mode-hook
-            (lambda ()
-              (set-face-attribute 'font-lock-builtin-face nil
-                                  :weight 'normal
-                                  :foreground (tango-color 'chocolate-2))
-              (set-face-attribute 'font-lock-keyword-face nil
-                                  :weight 'normal
-                                  :foreground (tango-color 'skyblue-2))
-              (set-face-attribute 'font-lock-function-name-face nil
-                                  :foreground (tango-color 'butter-3))
-              (set-face-attribute 'font-lock-variable-name-face nil
-                                  :foreground (tango-color 'butter-3))
-              (set-face-attribute 'font-lock-constant-face nil
-                                  :foreground (tango-color 'alminium-3))
-              (set-face-attribute 'font-lock-string-face nil
-                                  :foreground (tango-color 'alminium-3))
-              (set-face-attribute 'font-lock-type-face nil
-                                  :foreground (tango-color 'chameleon-3))
-              (set-face-attribute 'font-lock-comment-face nil
-                                  :foreground (tango-color 'alminium-3))
-              (set-face-attribute 'font-lock-warning-face nil
-                                  :underline t
-                                  :foreground (tango-color 'butter-2)
-                                  :weight 'normal))))
-
 ;;;; Show Paren
 
 (show-paren-mode t)
-
-(when window-system
-  (set-face-attribute 'show-paren-match nil
-                      :underline (tango-color 'skyblue-2)
-                      :foreground 'unspecified
-                      :background 'unspecified)
-  (set-face-attribute 'show-paren-mismatch nil
-                      :underline (tango-color 'scarletred-1)
-                      :foreground 'unspecified
-                      :background 'unspecified))
 
 ;;;; VIPER
 
@@ -286,62 +200,12 @@
 
 ;;;; Dired
 
-(when window-system
-  (add-hook 'dired-mode-hook
-            (lambda ()
-              (set-face-attribute 'dired-flagged nil
-                                  :weight 'normal
-                                  :foreground (tango-color 'scarletred-1))
-              (set-face-attribute 'dired-marked nil
-                                  :weight 'normal
-                                  :foreground (tango-color 'butter-2)))))
-
 ;; For suppression of overwriting the C-x C-j key binding. SKK uses it.
 (setq dired-bind-jump nil)
 
 ;;;; Diff
 
 (setq diff-switches "-u")
-
-(when window-system
-  (add-hook 'diff-mode-hook
-            (lambda ()
-              (set-face-attribute 'diff-context nil
-                                  :foreground (tango-color 'alminium-6))
-              (set-face-attribute 'diff-index nil
-                                  :weight 'normal
-                                  :foreground (tango-color 'alminium-6)
-                                  :background 'unspecified)
-              (set-face-attribute 'diff-header nil
-                                  :foreground (tango-color 'alminium-6)
-                                  :background 'unspecified)
-              (set-face-attribute 'diff-file-header nil
-                                  :weight 'normal
-                                  :foreground (tango-color 'alminium-6)
-                                  :background 'unspecified)
-              (set-face-attribute 'diff-hunk-header nil
-                                  :foreground (tango-color 'skyblue-2)
-                                  :background 'unspecified)
-              (set-face-attribute 'diff-added nil
-                                  :foreground (tango-color 'chameleon-2))
-              (set-face-attribute 'diff-removed nil
-                                  :foreground (tango-color 'scarletred-1)))))
-
-;;;; Info
-
-(when window-system
-  (add-hook 'Info-mode-hook
-            (lambda ()
-              (set-face-attribute 'info-header-xref nil
-                                  :foreground (tango-color 'skyblue-2))
-              (set-face-attribute 'info-xref nil
-                                  :underline t
-                                  :foreground (tango-color 'skyblue-2))
-              (set-face-attribute 'info-xref-visited nil
-                                  :foreground (tango-color 'plum-1))
-              (set-face-attribute 'info-node nil
-                                  :slant 'normal
-                                  :foreground (tango-color 'skyblue-2)))))
 
 ;;;; Package System
 
@@ -353,6 +217,14 @@
           ("melpa" . "https://melpa.org/packages/")
           ,@package-archives))
   (package-initialize))
+
+;;;; Theme
+
+(use-package ample-theme
+  :init (progn
+          (load-theme 'ample-flat t t)
+          (enable-theme 'ample-flat))
+  :defer t)
 
 ;;;; Shell
 
@@ -373,28 +245,8 @@
 (when-windows
   (add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m))
 
-(when window-system
-  (add-hook 'shell-mode-hook
-            (lambda ()
-              (set-face-attribute 'comint-highlight-prompt nil
-                                  :weight 'normal
-                                  :foreground (tango-color 'skyblue-2)))))
-
 (when (package-installed-p 'exec-path-from-shell)
   (exec-path-from-shell-initialize))
-
-;;;; Compilation
-
-(when window-system
-  (add-hook 'compilation-mode-hook
-            (lambda ()
-              (set-face-attribute 'compilation-info nil
-                                  :foreground (tango-color 'chameleon-3)
-                                  :weight 'normal)
-              (set-face-attribute 'compilation-error nil
-                                  :foreground (tango-color 'scarletred-1))
-              (set-face-attribute 'compilation-line-number nil
-                                  :foreground (tango-color 'skyblue-2)))))
 
 ;;;; Grep
 
@@ -434,33 +286,6 @@
 
 (global-company-mode)
 
-(add-hook 'company-mode-hook
-          (lambda ()
-            (set-face-attribute 'company-scrollbar-bg nil
-                                :background (tango-color 'alminium-2)
-                                :foreground 'unspecified)
-            (set-face-attribute 'company-scrollbar-fg nil
-                                :background (tango-color 'alminium-4)
-                                :foreground 'unspecified)
-            (set-face-attribute 'company-preview nil
-                                :background (tango-color 'skyblue-2)
-                                :foreground 'unspecified)
-            (set-face-attribute 'company-tooltip nil
-                                :background (tango-color 'alminium-1)
-                                :foreground (tango-color 'alminium-6))
-            (set-face-attribute 'company-tooltip-selection nil
-                                :background (tango-color 'skyblue-2)
-                                :foreground 'unspecified)
-            (set-face-attribute 'company-tooltip-annotation nil
-                                :background 'unspecified
-                                :foreground (tango-color 'alminium-4))
-            (set-face-attribute 'company-tooltip-common nil
-                                :background 'unspecified
-                                :foreground (tango-color 'skyblue-3))
-            (set-face-attribute 'company-tooltip-common-selection nil
-                                :background 'unspecified
-                                :foreground (tango-color 'skyblue-1))))
-
 ;;;; Helm
 
 (setq process-coding-system-alist
@@ -480,56 +305,11 @@
 
     ;; In default, C-j is bound to helm-execute-persistent-action.
     ;; For SKK, unbind it.
-    (define-key helm-map (kbd "C-j") nil)
-
-    (when (face-support/true-color-p)
-      (set-face-attribute 'helm-source-header nil
-                          :underline 'unspecified
-                          :foreground (tango-color 'skyblue-2)
-                          :background 'unspecified)
-      (set-face-attribute 'helm-selection nil
-                          :underline nil
-                          :foreground "white"
-                          :background (tango-color 'skyblue-2))
-      (set-face-attribute 'helm-candidate-number nil
-                          :foreground (tango-color 'chameleon-1)
-                          :background 'unspecified)
-      (set-face-attributes 'helm-action nil (face-all-attributes 'default))))
-
-  (eval-after-load* 'helm-command
-    (when (face-support/true-color-p)
-      (set-face-attribute 'helm-M-x-key nil
-                          :foreground (tango-color 'butter-3))))
+    (define-key helm-map (kbd "C-j") nil))
 
   (eval-after-load* 'helm-files
     (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
-    (define-key helm-find-files-map (kbd "C-<") 'helm-find-files-up-one-level)
-
-    (when (face-support/true-color-p)
-      (set-face-attribute 'helm-ff-directory nil
-                          :foreground (tango-color 'butter-3)
-                          :background 'unspecified)
-      (set-face-attributes 'helm-ff-file nil (face-all-attributes 'default))
-      (set-face-attribute 'helm-ff-executable nil
-                          :foreground (tango-color 'chameleon-3)
-                          :background 'unspecified)))
-
-  (eval-after-load* 'helm-buffers
-    (when (face-support/true-color-p)
-      (set-face-attribute 'helm-buffer-size nil
-                          :underline 'unspecified
-                          :foreground (tango-color 'butter-3)
-                          :background 'unspecified)))
-
-  (eval-after-load* 'helm-regexp
-    (when (face-support/true-color-p)
-      (set-face-attribute 'helm-moccur-buffer nil
-                          :foreground (tango-color 'chameleon-3))))
-
-  (eval-after-load* 'helm-grep
-    (when (face-support/true-color-p)
-      (set-face-attribute 'helm-grep-lineno nil
-                          :foreground (tango-color 'butter-3)))))
+    (define-key helm-find-files-map (kbd "C-<") 'helm-find-files-up-one-level)))
 
 (when (featurep 'helm-config)
   (require 'helm-ls-git nil t))
@@ -577,62 +357,6 @@
 
 (require 'magit nil t)
 
-(when (featurep 'magit)
-  (set-face-attribute 'magit-section-heading nil
-                      :foreground (tango-color 'skyblue-3)
-                      :background "white")
-  (set-face-attribute 'magit-section-highlight nil
-                      :foreground 'unspecified
-                      :background (tango-color 'alminium-1))
-  (set-face-attribute 'magit-diff-hunk-heading nil
-                      :foreground (tango-color 'alminium-3)
-                      :background (tango-color 'alminium-1))
-  (set-face-attribute 'magit-diff-file-heading nil
-                      :foreground (tango-color 'alminium-3)
-                      :background (tango-color 'alminium-1)
-                      :weight 'normal)
-  (set-face-attribute 'magit-diff-added nil
-                      :foreground (tango-color 'chameleon-3)
-                      :background 'unspecified)
-  (set-face-attribute 'magit-diff-added-highlight nil
-                      :foreground (tango-color 'chameleon-3)
-                      :background 'unspecified)
-  (set-face-attribute 'magit-diff-removed nil
-                      :foreground (tango-color 'scarletred-1)
-                      :background 'unspecified)
-  (set-face-attribute 'magit-diff-removed-highlight nil
-                      :foreground (tango-color 'scarletred-1)
-                      :background 'unspecified)
-  (set-face-attribute 'magit-diff-context nil
-                      :foreground (tango-color 'alminium-4)
-                      :background 'unspecified)
-  (set-face-attribute 'magit-diff-context-highlight nil
-                      :foreground (tango-color 'alminium-4)
-                      :background 'unspecified)
-  (set-face-attribute 'magit-diff-whitespace-warning nil
-                      :foreground 'unspecified
-                      :background (tango-color 'scarletred-1))
-  (set-face-attribute 'magit-branch-current nil
-                      :foreground (tango-color 'skyblue-3)
-                      :background 'unspecified
-                      :box nil
-                      :weight 'bold)
-  (set-face-attribute 'magit-branch-local nil
-                      :foreground (tango-color 'skyblue-3)
-                      :background 'unspecified)
-  (set-face-attribute 'magit-branch-remote nil
-                      :foreground (tango-color 'chocolate-2)
-                      :background 'unspecified)
-  (set-face-attribute 'magit-tag nil
-                      :foreground (tango-color 'chocolate-1)
-                      :background 'unspecified)
-  (set-face-attribute 'magit-log-author nil
-                      :foreground (tango-color 'chameleon-3)
-                      :background nil)
-  (set-face-attribute 'magit-hash nil
-                      :foreground (tango-color 'butter-3)
-                      :background nil))
-
 ;;;; C
 
 (add-hook 'c-mode-common-hook
@@ -662,17 +386,7 @@
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
               (define-key emacs-lisp-mode-map (kbd "C-c C-i")
-                'helm-lisp-completion-at-point)))
-
-  (eval-after-load* 'helm-elisp
-    (when (face-support/true-color-p)
-      (set-face-attribute 'helm-lisp-show-completion nil
-                          :underline (tango-color 'skyblue-2)
-                          :foreground (tango-color 'skyblue-2)
-                          :background 'unspecified)
-      (set-face-attribute 'helm-lisp-completion-info nil
-                          :foreground "white"
-                          :background 'unspecified))))
+                'helm-lisp-completion-at-point))))
 
 ;;;; Lisp
 
@@ -686,23 +400,6 @@
   (setq slime-net-coding-system 'utf-8-unix
         slime-lisp-implementations `((sbcl ("sbcl"))
                                      (clisp ("clisp"))))
-
-  (when window-system
-    (add-hook 'slime-mode-hook
-              (lambda () 
-                (set-face-attribute 'slime-repl-prompt-face nil
-                                    :foreground (tango-color 'skyblue-2))
-                (set-face-attribute 'slime-error-face nil
-                                    :underline (tango-color 'scarletred-1))
-                (set-face-attribute 'slime-warning-face nil
-                                    :underline (tango-color 'butter-2))
-                (set-face-attribute 'slime-inspector-action-face nil
-                                    :foreground (tango-color 'scarletred-1))
-                (set-face-attribute 'slime-repl-inputed-output-face nil
-                                    :foreground (tango-color 'scarletred-1))
-                (set-face-attribute 'slime-repl-output-mouseover-face nil
-                                    :box nil
-                                    :underline t))))
 
   (defun slime-space/skk (n)
     (interactive "p")
@@ -825,15 +522,6 @@
             (lambda ()
               (set (make-local-variable 'compile-command) "omake")))
 
-  (when window-system
-    (add-hook 'tuareg-mode-hook
-              (lambda ()
-                (set-face-attribute 'tuareg-font-lock-governing-face nil
-                                    :foreground (tango-color 'skyblue-2)
-                                    :weight 'normal)
-                (set-face-attribute 'tuareg-font-lock-operator-face nil
-                                    :foreground (tango-color 'alminium-4)))))
-
   ;(add-hook 'tuareg-mode-hook 'viper-mode)
   )
 
@@ -856,18 +544,6 @@
               (define-key tuareg-mode-map "\C-c\C-u" 'ocamlspot-use)
               (define-key tuareg-mode-map "\C-ct" 'caml-types-show-type)
               (define-key tuareg-mode-map "\C-cp" 'ocamlspot-pop-jump-stack)))
-
-  (when window-system
-    (add-hook 'tuareg-mode-hook
-              (lambda ()
-                (set-face-attribute 'ocamlspot-spot-face nil
-                                    :foreground (tango-color 'scarletred-1)
-                                    :background 'default
-                                    :underline t)
-                (set-face-attribute 'ocamlspot-tree-face nil
-                                    :foreground (tango-color 'skyblue-2)
-                                    :background 'default
-                                    :underline t))))
 
   ;; Cygwin kludge
 
@@ -982,41 +658,6 @@
       navi2ch-article-auto-expunge t
       browse-url-generic-program "google-chrome"
       browse-url-browser-function 'browse-url-generic)
-
-(when window-system
-  (add-hook 'navi2ch-face-load-hook
-            (lambda ()
-              (set-face-attribute 'navi2ch-list-category-face nil
-                                  :weight 'normal
-                                  :foreground (tango-color 'butter-2))
-              (set-face-attribute 'navi2ch-list-board-name-face nil
-                                  :foreground "#06989a")
-              (set-face-attribute 'navi2ch-article-header-face nil
-                                  :weight 'normal
-                                  :foreground (tango-color 'chameleon-3))
-              (set-face-attribute 'navi2ch-article-header-contents-face nil
-                                  :foreground (tango-color 'alminium-4))
-              (set-face-attribute 'navi2ch-article-header-fusianasan-face nil
-                                  :foreground (tango-color 'skyblue-2))
-              (set-face-attribute 'navi2ch-article-link-face nil
-                                  :weight 'normal
-                                  :underline t
-                                  :foreground (tango-color 'skyblue-2))
-              (set-face-attribute 'navi2ch-article-url-face nil
-                                  :weight 'normal
-                                  :underline t
-                                  :foreground (tango-color 'skyblue-2))
-              (set-face-attribute 'navi2ch-article-message-separator-face nil
-                                  :foreground (tango-color 'alminium-4))
-              (set-face-attribute 'navi2ch-bm-cache-face nil
-                                  :foreground (tango-color 'plum-2))
-              (set-face-attribute 'navi2ch-bm-view-face nil
-                                  :foreground (tango-color 'scarletred-1))
-              (set-face-attribute 'navi2ch-bm-update-face nil
-                                  :foreground (tango-color 'skyblue-2))
-              (set-face-attribute 'navi2ch-bm-mark-face nil
-                                  :underline nil
-                                  :foreground (tango-color 'chameleon-3)))))
 
 ;;;; Misc
 
