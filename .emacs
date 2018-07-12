@@ -614,8 +614,9 @@
             (lambda ()
               (setq truncate-lines t)))
 
-  (when-windows
-    (setq sql-mysql-options '("-C" "-t" "-f" "-n"))))
+  (if-windows
+    (setq sql-mysql-options '("--local-infile" "-C" "-t" "-f" "-n"))
+    (setq sql-mysql-options '("--local-infile"))))
 
 ;;;; TRAMP
 
