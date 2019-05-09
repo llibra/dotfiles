@@ -282,38 +282,6 @@
 
   (evil-mode 1))
 
-;;;; Company
-
-(global-company-mode)
-
-;;;; Helm
-
-(setq process-coding-system-alist
-      (cons '("es\\.exe$" utf-8-dos . utf-8-unix) process-coding-system-alist))
-
-(require 'helm-config nil t)
-
-(when (featurep 'helm-config)
-  (helm-mode 1)
-
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "C-x C-f") 'helm-find-files)
-  (global-set-key (kbd "C-x b") 'helm-buffers-list)
-
-  (eval-after-load* 'helm
-    (define-key helm-map (kbd "C-h") 'delete-backward-char)
-
-    ;; In default, C-j is bound to helm-execute-persistent-action.
-    ;; For SKK, unbind it.
-    (define-key helm-map (kbd "C-j") nil))
-
-  (eval-after-load* 'helm-files
-    (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
-    (define-key helm-find-files-map (kbd "C-<") 'helm-find-files-up-one-level)))
-
-(when (featurep 'helm-config)
-  (require 'helm-ls-git nil t))
-
 ;;;; Auto-Complete
 
 (require 'auto-complete-config nil t)
@@ -343,12 +311,6 @@
 
 (when (package-installed-p 'projectile)
   (projectile-global-mode))
-
-(when (package-installed-p 'helm-projectile)
-  (add-hook 'projectile-mode-hook
-            (lambda ()
-              (setq projectile-completion-system 'helm)
-              (helm-projectile-on))))
 
 ;;;; Git
 
@@ -381,12 +343,6 @@
   (projectile-rails-global-mode))
 
 ;;;; Emacs Lisp
-
-(when (featurep 'helm-config)
-  (add-hook 'emacs-lisp-mode-hook
-            (lambda ()
-              (define-key emacs-lisp-mode-map (kbd "C-c C-i")
-                'helm-lisp-completion-at-point))))
 
 ;;;; Lisp
 
