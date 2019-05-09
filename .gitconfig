@@ -1,3 +1,5 @@
 [user]
 	email = learn.libra@gmail.com
 	name = Manabu Takayama
+[core]
+	excludesfile = ~/.gitignore_global
