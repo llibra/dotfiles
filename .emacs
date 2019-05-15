@@ -220,10 +220,10 @@
 
 ;;;; Theme
 
-(use-package ample-theme
+(use-package monokai-theme
   :init (progn
-          (load-theme 'ample t t)
-          (enable-theme 'ample))
+          (load-theme 'monokai t t)
+          (enable-theme 'monokai))
   :defer t)
 
 ;;;; Shell
