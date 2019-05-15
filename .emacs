@@ -282,24 +282,6 @@
 
   (evil-mode 1))
 
-;;;; Auto-Complete
-
-(require 'auto-complete-config nil t)
-
-(when (featurep 'auto-complete-config)
-  (ac-config-default))
-
-;;;; Semantic
-
-(setq semantic-default-submodes
-      '(global-semantic-idle-scheduler-mode
-        global-semanticdb-minor-mode
-        global-semantic-idle-summary-mode
-        global-semantic-idle-completions-mode
-        global-semantic-mru-bookmark-mode))
-
-(semantic-mode 1)
-
 ;;;; YASnippet
 
 (require 'yasnippet nil t)
