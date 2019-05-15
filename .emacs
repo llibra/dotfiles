@@ -572,7 +572,22 @@
 
   (if-windows
     (setq sql-mysql-options '("--local-infile" "-C" "-t" "-f" "-n"))
-    (setq sql-mysql-options '("--local-infile"))))
+    (setq sql-mysql-options '("--local-infile")))
+
+  (defun sql-get-product (name)
+    (let ((connection (assoc 'food-oms sql-connection-alist)))
+      (if connection
+          (let ((variable (assoc 'sql-product connection)))
+            (if variable
+                (let ((value (nth 1 (cadr variable))))
+                  (if value value sql-product))
+              sql-product))
+        sql-product)))
+
+  (defun sql-connect* (connection)
+    (interactive (list (sql-read-connection "Connection: " nil)))
+    (let ((sql-product (sql-get-product connection)))
+      (sql-connect connection connection))))
 
 ;;;; TRAMP
 
