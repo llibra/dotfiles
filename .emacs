@@ -555,12 +555,6 @@
 
 ;;;; Java
 
-(require 'malabar-mode nil t)
-
-(eval-after-load* 'malabar-mode
-  (setq auto-mode-alist
-        (cons '("\\.java$" . malabar-mode)
-              auto-mode-alist)))
 
 ;;;; JavaScript
 
