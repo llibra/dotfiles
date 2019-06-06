@@ -309,6 +309,8 @@
          ("C-c k" . 'counsel-ag)
          ("C-x l" . 'counsel-locate)
          ("C-S-o" . 'counsel-rhythmbox))
+  :custom
+  (counsel-locate-cmd 'counsel-locate-cmd-mdfind)
   :config
   (use-package all-the-icons-ivy
     :ensure t
