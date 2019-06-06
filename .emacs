@@ -298,7 +298,6 @@
   :bind (("\C-s" . 'swiper)
          ("C-c C-r" . 'ivy-resume)
          ("<f6>" . 'ivy-resume)
-         ("M-x" . 'counsel-M-x)
          ("C-x C-f" . 'counsel-find-file)
          ("<f1> f" . 'counsel-describe-function)
          ("<f1> v" . 'counsel-describe-variable)
@@ -326,6 +325,25 @@
   (setq ivy-format-function 'ivy-format-function-default)
 
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
+
+;;;; Hydra
+
+(use-package hydra :defer t :ensure t
+  :bind
+  ("M-x" . 'hydra-execute/body)
+  :config
+  (defhydra hydra-execute (:color blue :hint nil)
+    "
+_x_: execute command  _j_: jump to visible text
+_w_: select window    _i_: info
+
+_C-g_: quit
+"
+    ("x" counsel-M-x)
+    ("j" avy-goto-char-timer)
+    ("w" ace-window)
+    ("i" info)
+    ("C-g" nil)))
 
 ;;;; YASnippet
 
