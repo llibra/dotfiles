@@ -282,6 +282,16 @@
 
   (evil-mode 1))
 
+;;;; ace-window
+
+(use-package ace-window :defer t :ensure t)
+
+;;;; avy
+
+(use-package avy :defer t :ensure t
+  :custom
+  (avy-timeout-seconds 1))
+
 ;;;; Ivy
 
 (use-package counsel :defer t
