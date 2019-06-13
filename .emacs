@@ -149,7 +149,6 @@
 (line-number-mode t)
 (column-number-mode t)
 
-
 ;;;; Ansi Color
 
 (eval-after-load* 'ansi-color
