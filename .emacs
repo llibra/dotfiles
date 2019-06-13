@@ -354,11 +354,6 @@ _C-g_: quit
 (when (featurep 'yasnippet)
   (yas-global-mode 1))
 
-;;;; Projectile
-
-(when (package-installed-p 'projectile)
-  (projectile-global-mode))
-
 ;;;; Git
 
 (setq process-coding-system-alist
@@ -385,9 +380,6 @@ _C-g_: quit
   (add-hook 'ruby-mode-hook
             (lambda ()
               (setq ruby-insert-encoding-magic-comment nil))))
-
-(when (package-installed-p 'projectile-rails)
-  (projectile-rails-global-mode))
 
 ;;;; Emacs Lisp
 
