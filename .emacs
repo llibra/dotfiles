@@ -322,7 +322,12 @@
   (setq enable-recursive-minibuffers t)
   (setq ivy-format-function 'ivy-format-function-default)
 
-  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
+  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+
+  (defun counsel-rg-default-directory (&optional initial-input initial-directory extra-rg-args rg-prompt)
+    (interactive)
+    (let ((extra-rg-args (concat "--no-ignore-vcs " extra-rg-args)))
+      (counsel-rg initial-input default-directory extra-rg-args rg-prompt))))
 
 ;;;; Hydra
 
@@ -330,16 +335,25 @@
   :bind
   ("M-x" . 'hydra-execute/body)
   :config
+  (defhydra hydra-rg (:color blue :hint nil)
+    "
+_g_: Git Root   _c_: Default Directory
+"
+    ("g" counsel-rg)
+    ("c" counsel-rg-default-directory)
+    ("C-g" nil))
+
   (defhydra hydra-execute (:color blue :hint nil)
     "
-_x_: execute command  _j_: jump to visible text
-_w_: select window    _i_: info
+_x_: execute command    _j_: jump to visible text   _w_: select window
+_g_: full text search   _i_: info
 
 _C-g_: quit
 "
     ("x" counsel-M-x)
     ("j" avy-goto-char-timer)
     ("w" ace-window)
+    ("g" hydra-rg/body)
     ("i" info)
     ("C-g" nil)))
 
