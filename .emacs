@@ -293,7 +293,7 @@
 
 ;;;; Ivy
 
-(use-package counsel :defer t
+(use-package counsel
   :bind (("\C-s" . 'swiper)
          ("C-c C-r" . 'ivy-resume)
          ("<f6>" . 'ivy-resume)
