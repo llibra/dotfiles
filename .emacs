@@ -311,13 +311,6 @@
   :custom
   (counsel-locate-cmd 'counsel-locate-cmd-mdfind)
   :config
-  (use-package all-the-icons-ivy
-    :ensure t
-    :init
-    (setq all-the-icons-color-icons nil)
-    :config
-    (all-the-icons-ivy-setup))
-
   (ivy-mode 1)
 
   (setq ivy-use-virtual-buffers t)
