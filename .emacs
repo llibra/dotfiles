@@ -346,7 +346,7 @@ _g_: Git Root   _c_: Default Directory
   (defhydra hydra-execute (:color blue :hint nil)
     "
 _x_: execute command    _j_: jump to visible text   _w_: select window
-_g_: full text search   _i_: info
+_g_: full text search   _m_: magit                  _i_: info
 
 _C-g_: quit
 "
@@ -354,6 +354,7 @@ _C-g_: quit
     ("j" avy-goto-char-timer)
     ("w" ace-window)
     ("g" hydra-rg/body)
+    ("m" magit-status)
     ("i" info)
     ("C-g" nil)))
 
