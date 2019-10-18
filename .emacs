@@ -240,11 +240,10 @@
 
 ;;;; Theme
 
-(use-package monokai-theme
-  :init (progn
-          (load-theme 'monokai t t)
-          (enable-theme 'monokai))
-  :defer t)
+(use-package base16-theme
+  :config
+  (load-theme 'base16-helios t)
+  :straight t)
 
 ;;;; Shell
 
