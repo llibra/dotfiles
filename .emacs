@@ -147,6 +147,7 @@
 
 (menu-bar-mode -1)
 (line-number-mode t)
+(global-display-line-numbers-mode t)
 (column-number-mode t)
 
 ;;;; Ansi Color
