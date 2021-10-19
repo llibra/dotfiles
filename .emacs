@@ -311,6 +311,16 @@
 
   (evil-mode 1))
 
+;;;; Shackle
+
+(use-package shackle :ensure t
+  :custom
+  (shackle-rules '((magit-status-mode :same t)
+                   (xref--xref-buffer-mode :align t)))
+  (shackle-default-rule '(:select t))
+  :config
+  (shackle-mode))
+
 ;;;; ace-window
 
 (use-package ace-window :defer t :ensure t)
