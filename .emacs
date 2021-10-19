@@ -301,6 +301,11 @@
   ;; For prevent conflict of changing cursor color with SKK.
   (setq evil-default-cursor t)
 
+  (global-undo-tree-mode)
+
+  (custom-set-variables '(evil-undo-system 'undo-tree))
+  (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
+
   (evil-set-initial-state 'term-mode 'emacs)
 
   (evil-mode 1))
