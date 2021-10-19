@@ -633,18 +633,10 @@ _C-g_: quit
 
 (use-package lsp-mode
   :ensure t
-  :init (setq lsp-eldoc-render-all nil
-              lsp-highlight-symbol-at-point nil))
 
-(use-package lsp-ui
-    :ensure t
-    :config (setq lsp-ui-sideline-update-mode 'point))
-
-(use-package company-lsp
-  :after company
-  :ensure t
-  :config (setq company-lsp-cache-candidates t
-                company-lsp-async t))
+  :hook
+  (php-mode . lsp)
+  (js-mode . lsp))
 
 ;;;; Debug Adapter Protocol
 
