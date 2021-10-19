@@ -627,27 +627,6 @@ _C-g_: quit
   :config (dap-mode t)
           (dap-ui-mode t))
 
-;;;; Java
-
-(use-package dap-java
-  :after dap-mode)
-
-(use-package treemacs
-  :ensure t)
-
-(use-package lsp-java-treemacs
-  :after (treemacs))
-
-(use-package lsp-java
-  :ensure t
-  :after (company-lsp lsp-ui dap-mode)
-  :config (add-hook 'java-mode-hook
-                    (lambda ()
-                      (setq-local company-backends '(company-lsp))
-                      (flycheck-mode)
-                      (company-mode)
-                      (lsp-ui-mode))))
-
 ;;;; JavaScript
 
 (with-eval-after-load 'js
