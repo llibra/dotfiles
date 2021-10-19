@@ -404,6 +404,11 @@ _C-g_: quit
   (setenv "PERL5LIB" (concat "~/perl5/lib/perl5" perl5lib))
   (setenv "PERL_CPANM_OPT" "--local-lib=~/perl5"))
 
+;;;; PHP
+
+(use-package php-mode :ensure t
+  :hook (php-mode . php-enable-psr2-coding-style))
+
 ;;;; Ruby
 
 (with-eval-after-load 'ruby-mode
