@@ -200,12 +200,15 @@
 
 ;;;; Dired
 
+(require 'dired-x)
+
 ;; For suppression of overwriting the C-x C-j key binding. SKK uses it.
 (setq dired-bind-jump nil)
 
-;; t: Sort by last modified time.
 ;; h: Enable file size unit.
-(setq dired-listing-switches "-alth")
+(setq dired-listing-switches "-alh")
+
+(add-hook 'dired-mode-hook 'dired-omit-mode)
 
 ;;;; Diff
 
