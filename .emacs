@@ -393,7 +393,7 @@ _C-g_: quit
 
 ;;;; C
 
-(add-hook 'c-mode-common-hook
+(add-hook 'c-mode-hook
           (lambda ()
             (c-set-style "bsd")
             (setq c-basic-offset 2)))
