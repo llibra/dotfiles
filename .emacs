@@ -307,6 +307,7 @@
   (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
 
   (evil-set-initial-state 'term-mode 'emacs)
+  (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
 
   (evil-mode 1))
 
