@@ -364,6 +364,7 @@ _g_: Git Root   _c_: Default Directory
     "
 _x_: execute command    _j_: jump to visible text   _w_: select window
 _g_: full text search   _m_: magit                  _i_: info
+_b_: bookmark
 
 _C-g_: quit
 "
@@ -373,6 +374,7 @@ _C-g_: quit
     ("g" hydra-rg/body)
     ("m" magit-status)
     ("i" info)
+    ("b" counsel-bookmark)
     ("C-g" nil)))
 
 ;;;; YASnippet
