@@ -379,11 +379,19 @@ _g_: Git Root   _c_: Default Directory
     ("c" counsel-rg-default-directory)
     ("C-g" nil))
 
+  (defhydra hydra-flymake (:color blue :hint nil)
+    "
+_n_: next error   _p_: previous error   _._: error at point
+"
+    ("n" flymake-goto-next-error)
+    ("p" flymake-goto-prev-error)
+    ("." display-local-help))
+
   (defhydra hydra-execute (:color blue :hint nil)
     "
 _x_: execute command    _j_: jump to visible text   _w_: select window
 _g_: full text search   _m_: magit                  _i_: info
-_b_: bookmark
+_b_: bookmark           _d_: diagnostics
 
 _C-g_: quit
 "
@@ -394,6 +402,7 @@ _C-g_: quit
     ("m" magit-status)
     ("i" info)
     ("b" counsel-bookmark)
+    ("d" hydra-flymake/body)
     ("C-g" nil)))
 
 ;;;; YASnippet
