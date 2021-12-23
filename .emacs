@@ -315,9 +315,9 @@
 
 (use-package shackle :ensure t
   :custom
-  (shackle-rules '((magit-status-mode :same t)
-                   (xref--xref-buffer-mode :align t)))
-  (shackle-default-rule '(:select t))
+  (shackle-rules '((magit-status-mode :align left)
+                   (xref--xref-buffer-mode :align bottom)))
+
   :config
   (shackle-mode))
 
