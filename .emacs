@@ -811,6 +811,12 @@ _C-g_: quit
             ("&" . "&amp;"))
           :initial-value x))
 
+;;; Work Around
+
+;; To suppress error of list-packages.
+(when (and (equal emacs-version "27.2") (eq system-type 'darwin))
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+
 ;;; Custom
 
 (setq custom-file "~/.emacs.d/custom.el")
