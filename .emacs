@@ -419,6 +419,12 @@ _C-g_: quit
 
 (require 'magit nil t)
 
+;;;; Treemacs
+
+(use-package treemacs
+  :config
+  (evil-set-initial-state 'treemacs-mode 'emacs))
+
 ;;;; C
 
 (add-hook 'c-mode-hook
