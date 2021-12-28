@@ -189,10 +189,6 @@
 
 (global-font-lock-mode t)
 
-;;;; Show Paren
-
-(show-paren-mode t)
-
 ;;;; VIPER
 
 ;(setq viper-mode t)
@@ -241,6 +237,13 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
+
+;;;; rainbow-delimiters
+
+(use-package rainbow-delimiters
+  :hook
+  (prog-mode . rainbow-delimiters-mode)
+  :straight t)
 
 ;;;; Theme
 
