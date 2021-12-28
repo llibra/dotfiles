@@ -651,10 +651,17 @@ _C-g_: quit
 
 (use-package lsp-mode
   :ensure t
-
   :hook
-  (php-mode . lsp)
-  (js-mode . lsp))
+  (js-mode . lsp)
+
+  :init
+  (add-hook 'php-mode-hook
+            (lambda ()
+              (setq lsp-file-watch-ignored-directories
+                    `("[/\\\\]vendor\\'" "[/\\\\]storage\\'" ,@lsp-file-watch-ignored-directories))
+              (lsp)))
+
+  (evil-set-initial-state 'lsp-ui-imenu-mode 'emacs))
 
 ;;;; Debug Adapter Protocol
 
