@@ -244,9 +244,9 @@
 
 ;;;; Theme
 
-(use-package base16-theme
+(use-package material-theme
   :config
-  (load-theme 'base16-helios t)
+  (load-theme 'material t)
   :straight t)
 
 ;;;; Shell
