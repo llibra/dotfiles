@@ -124,10 +124,9 @@
 
 (when window-system
   ;; Font
-  (let* ((family "M+ 1m")
+  (let* ((family "M PLUS 1 Code")
          (size (if-windows "9" "14"))
-         (style (if-windows "" ":weight=normal:slant=normal"))
-         (base-font (concat family "-" size style)))
+         (base-font (concat family "-" size)))
     (create-fontset-from-ascii-font base-font nil "mine")
     (let ((spec (font-spec :family family :weight 'normal :slant 'normal)))
       (set-fontset-font "fontset-mine" 'latin-jisx0201 spec)
