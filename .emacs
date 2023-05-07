@@ -335,7 +335,7 @@
 
 ;;;; Ivy
 
-(use-package counsel
+(use-package counsel :ensure t
   :bind (("\C-s" . 'swiper)
          ("C-c C-r" . 'ivy-resume)
          ("<f6>" . 'ivy-resume)
