@@ -419,7 +419,7 @@ _C-g_: quit
 (setq process-coding-system-alist
       (cons '("git" utf-8 . utf-8) process-coding-system-alist))
 
-(require 'magit nil t)
+(use-package magit :ensure t)
 
 ;;;; Treemacs
 
