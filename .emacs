@@ -232,25 +232,7 @@
 
 ;;;; Shell
 
-(require 'term)
-
-(setq explicit-shell-file-name "zsh")
-
-(when-windows
-  (define-alternate-program "/bin/sh" '("fakecygpty" "/bin/sh")))
-
-;; Kludge for term.el.
-;; It refers not process-coding-system but locale-coding-system.
-(add-hook 'term-mode-hook
-          (lambda ()
-            (make-local-variable locale-coding-system)
-            (setq locale-coding-system 'utf-8)))
-
-(when-windows
-  (add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m))
-
-(when (package-installed-p 'exec-path-from-shell)
-  (exec-path-from-shell-initialize))
+(use-package vterm :ensure t)
 
 ;;;; Grep
 
