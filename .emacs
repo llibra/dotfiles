@@ -242,10 +242,10 @@
 
 ;;;; Theme
 
-(use-package material-theme
+(use-package apropospriate-theme
   :config
-  (load-theme 'material t)
-  :straight t)
+  (load-theme 'apropospriate-light t)
+  :ensure t)
 
 ;;;; Shell
 
