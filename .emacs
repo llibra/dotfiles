@@ -124,20 +124,17 @@
 
 (when window-system
   ;; Font
-  (let* ((family "M PLUS 1 Code")
-         (size (if-windows "9" "14"))
-         (base-font (concat family "-" size)))
-    (create-fontset-from-ascii-font base-font nil "mine")
-    (let ((spec (font-spec :family family :weight 'normal :slant 'normal)))
-      (set-fontset-font "fontset-mine" 'latin-jisx0201 spec)
-      (set-fontset-font "fontset-mine" 'katakana-jisx0201 spec)
-      (set-fontset-font "fontset-mine" 'japanese-jisx0208 spec)))
+  (set-face-attribute 'default nil :family "Maple Mono" :height 160)
+
+  (let ((spec (font-spec :family "Kosugi Maru")))
+    (set-fontset-font "fontset-default" 'latin-jisx0201 spec)
+    (set-fontset-font "fontset-default" 'katakana-jisx0201 spec)
+    (set-fontset-font "fontset-default" 'japanese-jisx0208 spec))
 
   ;; Frame
   (setq default-frame-alist
         `((width . 160)
           (height . 32)
-          (font . "fontset-mine")
           ,@default-frame-alist))
 
   (tool-bar-mode -1)
