@@ -509,96 +509,22 @@ _C-g_: quit
 
 ;;;; OCaml
 
-;;; Caml Mode
+(use-package envrc
+  :hook (after-init . envrc-global-mode)
+  :ensure t)
 
-(autoload 'caml-mode "caml" "Major mode for editing OCaml code." t)
-(autoload 'run-caml "inf-caml" "Run an inferior OCaml process." t)
-(autoload 'camldebug "camldebug" "Run ocamldebug on program." t)
+(use-package tuareg
+  :mode (("\\.ocamlinit\\'" . tuareg-mode))
+  :ensure t)
 
-(when window-system
-  (require 'caml-font nil t))
+(use-package eglot :ensure t)
 
-(setq inferior-caml-program (if-windows "sh -c ocaml" "ocaml")
-      process-coding-system-alist
-      (cons (if-windows '("^sh$" utf-8 . utf-8)
-                        '("ocaml" utf-8 . utf-8))
-            process-coding-system-alist)
-      auto-mode-alist
-      (cons '("\\.ml[iylp]?$" . caml-mode) auto-mode-alist)
-      interpreter-mode-alist
-      `(("ocamlrun" . caml-mode)
-        ("ocaml" . caml-mode)
-        ,@interpreter-mode-alist))
-
-;; If "ocamlc -where" is called, OCaml built with Cygwin returns a Cygwin-style
-;; path. Caml mode on non-Cygwin Emacs can't handle it.
-(when-windows
-  (setq ocaml-lib-path '("C:/Cygwin/usr/local/ocaml-4.00.0/lib/ocaml")))
-
-;(add-hook 'caml-mode-hook 'viper-mode)
-
-;;; Tuareg Mode
-
-(load "tuareg-site-file" t)
-
-(when (fboundp 'tuareg-mode)
-  (setq tuareg-use-smie t
-        tuareg-interactive-program inferior-caml-program
-        tuareg-browser 'browse-url-firefox
-        tuareg-library-path
-        (if-windows "C:/Cygwin/usr/local/ocaml-4.00.0/lib/ocaml/"
-                    "/usr/local/lib/ocaml/"))
-
-  (add-hook 'tuareg-mode-hook
-            (lambda ()
-              (set (make-local-variable 'compile-command) "omake")))
-
-  ;(add-hook 'tuareg-mode-hook 'viper-mode)
-  )
-
-;;; OCamlSpotter
-
-(require 'ocamlspot nil t)
-
-(when (featurep 'ocamlspot)
-  (setq ocamlspot-command "ocamlspot.opt")
-
-  (add-hook 'tuareg-mode-hook
-            (lambda ()
-              (define-key tuareg-mode-map "\C-c;" 'ocamlspot-query)
-              (define-key tuareg-mode-map "\C-c:" 'ocamlspot-query-interface)
-              (define-key tuareg-mode-map "\C-c'" 'ocamlspot-query-uses)
-              (define-key tuareg-mode-map "\C-c\C-t" 'ocamlspot-type)
-              (define-key tuareg-mode-map "\C-c\C-i" 'ocamlspot-xtype)
-              (define-key tuareg-mode-map "\C-c\C-y" 'ocamlspot-type-and-copy)
-              (define-key tuareg-mode-map "\C-cx" 'ocamlspot-expand)
-              (define-key tuareg-mode-map "\C-c\C-u" 'ocamlspot-use)
-              (define-key tuareg-mode-map "\C-ct" 'caml-types-show-type)
-              (define-key tuareg-mode-map "\C-cp" 'ocamlspot-pop-jump-stack)))
-
-  ;; Cygwin kludge
-
-  (defun cygpath (args)
-    (let* ((command (with-output-to-string
-                      (princ "cygpath")
-                      (mapc (lambda (x) (princ " ") (princ x)) args)))
-           (result (shell-command-to-string command)))
-      (replace-regexp-in-string "\n$" "" result)))
-
-  (defun ocamlspot-query-string-at-cursor ()
-    (let ((file-name (cygpath `(-u ,(prin1-to-string (buffer-file-name))))))
-      (setq ad-return-value
-            (format "%s:l%dc%d"
-                    file-name
-                    (ocamlspot-lines-of-point)
-                    (ocamlspot-bytes-of-line-to-point)))))
-
-  (defun ocamlspot-find-file-existing (path)
-    (let ((path (cygpath `(-w ,path))))
-      (if (file-exists-p path)
-          (find-file-other-window path)
-        (ocamlspot-message-add (format "ERROR: source file %s was not found" path))
-        nil))))
+(use-package ocaml-eglot
+  :after tuareg
+  :hook
+  (tuareg-mode . ocaml-eglot)
+  (ocaml-eglot . eglot-ensure)
+  :ensure t)
 
 ;;;; Erlang
 
