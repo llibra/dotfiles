@@ -30,6 +30,10 @@
   `(if-mac (progn ,@body)))
 (put 'when-mac 'lisp-indent-function 0)
 
+(defmacro if-wsl (then &optional else)
+  `(if (getenv "WSL_INTEROP")
+       ,then ,else))
+
 (defmacro eval-after-load* (file &rest body)
   `(eval-after-load ,file '(progn ,@body)))
 (put 'eval-after-load* 'lisp-indent-function 1)
