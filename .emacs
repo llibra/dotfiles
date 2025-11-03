@@ -117,7 +117,7 @@
 (setq-default indent-tabs-mode nil
               tab-width 8
               fill-colmun 80
-              line-spacing 0
+              line-spacing 0.3
               indicate-empty-lines t)
 
 ;;;; UI
