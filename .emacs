@@ -133,8 +133,7 @@
 
   ;; Frame
   (setq default-frame-alist
-        `((width . 160)
-          (height . 32)
+        `((fullscreen . maximized)
           ,@default-frame-alist))
 
   (tool-bar-mode -1)
