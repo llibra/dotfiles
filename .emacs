@@ -203,11 +203,6 @@
 
 (global-font-lock-mode t)
 
-;;;; VIPER
-
-;(setq viper-mode t)
-;(require 'viper)
-
 ;;;; Dired
 
 (require 'dired-x)
@@ -483,8 +478,6 @@ _C-g_: quit
 (put 'match 'scheme-indent-function 1)
 (put 'define-method 'scheme-indent-function 2)
 
-;(add-hook 'scheme-mode-hook 'viper-mode)
-
 ;;; Remote connection
 
 (defvar run-remote-scheme-ssh "fakecygpty"
@@ -650,8 +643,6 @@ _C-g_: quit
       `(("\\.xml$" . nxml-mode)
         ("\\.xsl$" . nxml-mode)
         ,@auto-mode-alist))
-
-;(add-hook 'nxml-mode-hook 'viper-mode)
 
 ;;;; Emacsclient
 
