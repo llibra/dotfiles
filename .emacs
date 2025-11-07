@@ -662,47 +662,6 @@ _C-g_: quit
 
 (require 'cl)
 
-(define-derived-mode blogger-form-mode nxml-mode "Blogger-Form"  
-  "Major mode for edit Blogger's post form"
-  (setq buffer-file-coding-system 'utf-8)
-  (save-excursion
-    (goto-char (point-min))
-    (insert "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
-            "  <head>\n"
-            "    <title>blogger-form-mode</title>\n"
-            "  </head>\n"
-            "  <body>\n"
-            "    <div>\n"
-            "<!-- content -->\n")
-    (let ((content-min (point))
-          (content-max (point-max)))
-      (goto-char (point-max))
-      (insert "<!-- /content -->\n"
-              "    </div>\n"
-              "  </body>\n"
-              "</html>")
-      (narrow-to-region content-min content-max)))
-  (rng-auto-set-schema-and-validate)
-  (set-buffer-modified-p nil)
-  (defun blogger-form-save-buffer ()
-    (interactive)
-    ;; 呼ばれる状況が限定されるので、色々と省略
-    (write-region (point-min) (point-max) (buffer-file-name))
-    (set-visited-file-modtime)
-    (set-buffer-modified-p nil))
-  (defun blogger-form-server-edit ()
-    (interactive)
-    (blogger-form-save-buffer)
-    (server-edit))
-  (define-key blogger-form-mode-map "\C-x\C-s" 'blogger-form-save-buffer)
-  (define-key blogger-form-mode-map "\C-x#" 'blogger-form-server-edit))
-
-;(setq auto-mode-alist
-;      (acons (format "^%s/ViewSourceWith/www[0-9]*\\.blogger\\.com_post"
-;                     (w32-long-file-name (getenv "TEMP")))
-;             'blogger-form-mode
-;             auto-mode-alist))
-
 (defun refer-gauche-reference (start end)
   (interactive "r")
   (save-excursion
