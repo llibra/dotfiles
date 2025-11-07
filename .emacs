@@ -248,10 +248,15 @@
 
 ;;;; SKK
 
-(global-set-key (kbd "C-x C-j") 'skk-mode)
-
-(add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
-(add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup)
+(use-package ddskk
+  :bind*
+  (("C-x C-j" . skk-mode))
+  :custom
+  (skk-status-indicator 'minor-mode)
+  :hook
+  (isearch-mode-hook . skk-isearch-mode-setup)
+  (isearch-mode-end-hook . skk-isearch-mode-cleanup)
+  :ensure t)
 
 ;;;; cygwin-mount.el
 
