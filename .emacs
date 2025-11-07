@@ -645,15 +645,6 @@ _C-g_: quit
 
 (server-start)
 
-;;;; Navi2ch
-
-(autoload 'navi2ch "navi2ch" "Navigator for 2ch for Emacs" t)
-
-(setq navi2ch-article-auto-range nil
-      navi2ch-article-auto-expunge t
-      browse-url-generic-program "google-chrome"
-      browse-url-browser-function 'browse-url-generic)
-
 ;;;; Misc
 
 (cd "~")
