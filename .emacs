@@ -207,9 +207,6 @@
 
 (require 'dired-x)
 
-;; For suppression of overwriting the C-x C-j key binding. SKK uses it.
-(setq dired-bind-jump nil)
-
 ;; h: Enable file size unit.
 (setq dired-listing-switches "-alh")
 
