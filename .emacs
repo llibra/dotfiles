@@ -149,6 +149,21 @@
 (column-number-mode t)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
+;;;; Mode Line
+
+(use-package nerd-icons :ensure t)
+
+(use-package doom-modeline
+  :after nerd-icons
+  :init (doom-modeline-mode 1)
+  :custom
+  (doom-modeline-minor-modes t)
+  :custom-face
+  ;; cf. https://github.com/seagle0128/doom-modeline/issues/632
+  (doom-modeline-evil-normal-state ((t (:weight normal))))
+  (doom-modeline-evil-insert-state ((t (:weight normal))))
+  :ensure t)
+
 ;;;; Ansi Color
 
 (eval-after-load* 'ansi-color
