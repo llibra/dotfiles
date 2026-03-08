@@ -128,12 +128,29 @@
 
 (when window-system
   ;; Font
-  (set-face-attribute 'default nil :family "Maple Mono" :height 160)
+  (set-face-attribute 'default nil :family "JetBrains Mono" :height 160)
 
-  (let ((spec (font-spec :family "Kosugi Maru")))
-    (set-fontset-font "fontset-default" 'latin-jisx0201 spec)
-    (set-fontset-font "fontset-default" 'katakana-jisx0201 spec)
-    (set-fontset-font "fontset-default" 'japanese-jisx0208 spec))
+  (let ((fontset (face-attribute 'default :fontset))
+        (spec (font-spec :family "Noto Sans Mono CJK JP")))
+    (set-fontset-font fontset 'latin-jisx0201 spec)
+    (set-fontset-font fontset 'katakana-jisx0201 spec)
+    (set-fontset-font fontset 'japanese-jisx0208 spec))
+
+  (let* ((ascii-family "Courier Prime")
+         (fontset (create-fontset-from-ascii-font ascii-family))
+         (spec (font-spec :family "Noto Serif CJK JP")))
+    (set-fontset-font fontset 'latin-jisx0201 spec)
+    (set-fontset-font fontset 'katakana-jisx0201 spec)
+    (set-fontset-font fontset 'japanese-jisx0208 spec)
+    (set-face-attribute 'fixed-pitch-serif nil :family ascii-family :fontset fontset :height 160))
+
+  (let* ((family "Noto Sans CJK JP")
+         (fontset (create-fontset-from-ascii-font family))
+         (spec (font-spec :family family)))
+    (set-fontset-font fontset 'latin-jisx0201 spec)
+    (set-fontset-font fontset 'katakana-jisx0201 spec)
+    (set-fontset-font fontset 'japanese-jisx0208 spec)
+    (set-face-attribute 'variable-pitch nil :family family :weight 'bold :fontset fontset :height 160))
 
   ;; Frame
   (setq default-frame-alist
