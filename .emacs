@@ -305,7 +305,9 @@
   (custom-set-variables '(evil-undo-system 'undo-tree))
   (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
 
-  (evil-set-initial-state 'term-mode 'emacs)
+  (evil-set-initial-state 'Info-mode 'emacs)
+  (evil-set-initial-state 'special-mode 'emacs)
+  (evil-set-initial-state 'vterm-mode 'emacs)
   (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
 
   (evil-mode 1))
