@@ -668,30 +668,6 @@ _C-g_: quit
 
 (load "~/.emacs.d/site.el" t)
 
-(require 'cl)
-
-(defun refer-gauche-reference (start end)
-  (interactive "r")
-  (save-excursion
-    (save-restriction
-      (narrow-to-region start end)
-      (let ((substring (buffer-substring (point-min) (point-max))))
-        (delete-region (point-min) (point-max))
-        (insert
-         (format (concat "<a href=\"http://practical-scheme.net/gauche/man/"
-                         "?l=jp&amp;p=%s\">%s</a>")
-                 (url-hexify-string substring)
-                 (xml-escape-string substring))))
-      )))
-
-(defun xml-escape-string (x)
-  (reduce #'(lambda (s e)
-              (replace-regexp-in-string (car e) (cdr e) s))
-          '(("<" . "&lt;")
-            (">" . "&gt;")
-            ("&" . "&amp;"))
-          :initial-value x))
-
 ;;; Work Around
 
 ;;; Custom
