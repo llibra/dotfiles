@@ -261,7 +261,9 @@
 
 ;;;; Shell
 
-(use-package vterm :ensure t)
+(use-package vterm :ensure t
+  :custom
+  (vterm-keymap-exceptions '("C-c" "C-x" "C-u" "C-g" "C-l" "M-x" "M-o" "C-y" "M-y")))
 
 ;;;; Grep
 
