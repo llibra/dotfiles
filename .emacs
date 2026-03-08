@@ -241,7 +241,8 @@
   (setq package-archives
         `(("melpa-stable" . "https://stable.melpa.org/packages/")
           ("melpa" . "https://melpa.org/packages/")
-          ,@package-archives))
+          ,@package-archives)
+        package-install-upgrade-built-in t)
   (package-initialize))
 
 ;;;; rainbow-delimiters
@@ -661,6 +662,25 @@ _C-g_: quit
 ;;;; Emacsclient
 
 (server-start)
+
+;;;; EasyPG
+
+(setq epa-pinentry-mode 'loopback
+      epa-file-encrypt-to '("learn.libra@gmail.com"))
+
+;;;; LLM
+
+(use-package gptel
+  :config
+  (setopt gptel-backend
+          `(gptel-gemini "Gemini"
+                         :key ,(auth-source-pick-first-password :host "generativelanguage.googleapis.com"
+                                                                :user "apikey")
+                         :stream t))
+  :custom
+  (gptel-model 'gemini-flash-latest)
+  :defer t
+  :ensure t)
 
 ;;;; Misc
 
