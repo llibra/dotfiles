@@ -566,29 +566,6 @@ _C-g_: quit
 
 (require 'scala-mode-auto nil t)
 
-;;;; Language Server Protocol
-
-(use-package lsp-mode
-  :ensure t
-  :hook
-  (js-mode . lsp)
-
-  :init
-  (add-hook 'php-mode-hook
-            (lambda ()
-              (setq lsp-file-watch-ignored-directories
-                    `("[/\\\\]vendor\\'" "[/\\\\]storage\\'" ,@lsp-file-watch-ignored-directories))
-              (lsp)))
-
-  (evil-set-initial-state 'lsp-ui-imenu-mode 'emacs))
-
-;;;; Debug Adapter Protocol
-
-(use-package dap-mode
-  :ensure t
-  :config (dap-mode t)
-          (dap-ui-mode t))
-
 ;;;; JavaScript
 
 (with-eval-after-load 'js
