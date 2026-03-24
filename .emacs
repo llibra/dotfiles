@@ -329,54 +329,42 @@
   :custom
   (avy-timeout-seconds 1))
 
-;;;; Ivy
+;;;; Completion
 
-(use-package counsel :ensure t
-  :bind (("\C-s" . 'swiper)
-         ("C-c C-r" . 'ivy-resume)
-         ("<f6>" . 'ivy-resume)
-         ("C-x C-f" . 'counsel-find-file)
-         ("<f1> f" . 'counsel-describe-function)
-         ("<f1> v" . 'counsel-describe-variable)
-         ("<f1> l" . 'counsel-find-library)
-         ("<f2> i" . 'counsel-info-lookup-symbol)
-         ("<f2> u" . 'counsel-unicode-char)
-         ("C-c g" . 'counsel-git)
-         ("C-c j" . 'counsel-git-grep)
-         ("C-c k" . 'counsel-ag)
-         ("C-x l" . 'counsel-locate)
-         ("C-S-o" . 'counsel-rhythmbox))
+(use-package vertico
   :custom
-  (counsel-locate-cmd 'counsel-locate-cmd-mdfind)
+  (vertico-resize t)
+  (enable-recursive-minibuffers t)
+  (read-extended-command-predicate 'command-completion-default-include-p)
+  (minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
+  :init
+  (vertico-mode)
+  :hook
+  (minibuffer-setup-hook . cursor-intangible-mode)
+  :ensure t)
+
+(use-package consult
+  :bind (("C-x b" . 'consult-buffer)
+         ("C-s". 'consult-line))
   :config
-  (ivy-mode 1)
+  (setq completion-in-region-function 'consult-completion-in-region)
+  :ensure t)
 
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-use-selectable-prompt t)
-  (setq enable-recursive-minibuffers t)
-  (setq ivy-format-function 'ivy-format-function-default)
-
-  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-
-  (defun counsel-rg-default-directory (&optional initial-input initial-directory extra-rg-args rg-prompt)
-    (interactive)
-    (let ((extra-rg-args (concat "--no-ignore-vcs " extra-rg-args)))
-      (counsel-rg initial-input default-directory extra-rg-args rg-prompt))))
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-category-defaults nil)
+  (completion-pcm-leading-wildcard t)
+  :ensure t)
 
 ;;;; Hydra
 
-(use-package hydra :defer t :ensure t
+(use-package hydra
+  :ensure t
   :bind
   ("M-x" . 'hydra-execute/body)
   :config
-  (defhydra hydra-rg (:color blue :hint nil)
-    "
-_g_: Git Root   _c_: Default Directory
-"
-    ("g" counsel-rg)
-    ("c" counsel-rg-default-directory)
-    ("C-g" nil))
-
   (defhydra hydra-flymake (:color blue :hint nil)
     "
 _n_: next error   _p_: previous error   _._: error at point
@@ -389,17 +377,16 @@ _n_: next error   _p_: previous error   _._: error at point
     "
 _x_: execute command    _j_: jump to visible text   _w_: select window
 _g_: full text search   _m_: magit                  _i_: info
-_b_: bookmark           _d_: diagnostics
+_d_: diagnostics
 
 _C-g_: quit
 "
-    ("x" counsel-M-x)
+    ("x" execute-extended-command)
     ("j" avy-goto-char-timer)
     ("w" ace-window)
-    ("g" hydra-rg/body)
+    ("g" consult-ripgrep)
     ("m" magit-status)
     ("i" info)
-    ("b" counsel-bookmark)
     ("d" hydra-flymake/body)
     ("C-g" nil)))
 
