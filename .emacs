@@ -124,6 +124,18 @@
               line-spacing 0.3
               indicate-empty-lines t)
 
+;;;; Package System
+
+(require 'package nil t)
+
+(when (featurep 'package)
+  (setq package-archives
+        `(("melpa-stable" . "https://stable.melpa.org/packages/")
+          ("melpa" . "https://melpa.org/packages/")
+          ,@package-archives)
+        package-install-upgrade-built-in t)
+  (package-initialize))
+
 ;;;; UI
 
 (when window-system
@@ -232,18 +244,6 @@
 ;;;; Diff
 
 (setq diff-switches "-u")
-
-;;;; Package System
-
-(require 'package nil t)
-
-(when (featurep 'package)
-  (setq package-archives
-        `(("melpa-stable" . "https://stable.melpa.org/packages/")
-          ("melpa" . "https://melpa.org/packages/")
-          ,@package-archives)
-        package-install-upgrade-built-in t)
-  (package-initialize))
 
 ;;;; rainbow-delimiters
 
