@@ -419,12 +419,6 @@ _C-g_: quit
 
 (use-package magit :ensure t)
 
-;;;; Treemacs
-
-(use-package treemacs
-  :config
-  (evil-set-initial-state 'treemacs-mode 'emacs))
-
 ;;;; C
 
 (add-hook 'c-mode-hook
