@@ -221,6 +221,21 @@
 ;;; Narrowing
 (put 'narrow-to-region 'disabled nil)
 
+;;;; History
+
+(use-package recentf
+  :init
+  (recentf-mode 1)
+  :custom
+  (recentf-max-saved-items 20)
+  (recentf-auto-cleanup 'never)
+  :config
+  (run-at-time nil (* 5 60) #'recentf-save-list))
+
+(use-package savehist
+  :init
+  (savehist-mode))
+
 ;;;; Abbrev
 
 (setq save-abbrevs t)
