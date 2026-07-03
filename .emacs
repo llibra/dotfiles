@@ -110,7 +110,7 @@
               (set-default-coding-systems 'cp932)
               (setq-default buffer-file-coding-system 'utf-8-unix))
             (set-default-coding-systems 'utf-8))
- 
+
 ;;;; Variables
 
 (setq inhibit-startup-screen t
@@ -287,7 +287,7 @@
 
 ;;;; cygwin-mount.el
 
-(require 'cygwin-mount nil t) 
+(require 'cygwin-mount nil t)
 
 (when (featurep 'cygwin-mount-autoloads)
   (cygwin-mount-activate))
@@ -510,7 +510,7 @@ _C-g_: quit
 
 (defun run-remote-scheme (host cmd)
   "Run remote scheme process. It doesn't look about not password-less authentication"
-  (interactive 
+  (interactive
    (if current-prefix-arg
        (list (read-string "Hostname: " run-remote-scheme-default-host)
              (read-string "Run Scheme: " run-remote-scheme-program))
@@ -524,7 +524,7 @@ _C-g_: quit
 
 (defun run-remote-scheme-on-other-window (host cmd)
   "Run remote scheme process on other window"
-  (interactive 
+  (interactive
    (if current-prefix-arg
        (list (read-string "Hostname: " run-remote-scheme-default-host)
              (read-string "Run Scheme: " run-remote-scheme-program))
