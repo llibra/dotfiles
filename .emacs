@@ -294,17 +294,14 @@
 
 ;;;; Evil
 
-(require 'evil nil t)
+(use-package evil :ensure t
+  :custom
+  (evil-undo-system 'undo-redo)
 
-(when (featurep 'evil)
   ;; For prevent conflict of changing cursor color with SKK.
-  (setq evil-default-cursor t)
+  (evil-default-cursor t)
 
-  (global-undo-tree-mode)
-
-  (custom-set-variables '(evil-undo-system 'undo-tree))
-  (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
-
+  :config
   (evil-set-initial-state 'Info-mode 'emacs)
   (evil-set-initial-state 'special-mode 'emacs)
   (evil-set-initial-state 'vterm-mode 'emacs)
