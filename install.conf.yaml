@@ -1,0 +1,11 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.emacs.d/init.el: .emacs
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
