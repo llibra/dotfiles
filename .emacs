@@ -686,6 +686,10 @@ _C-g_: quit
   :defer t
   :ensure t)
 
+;;;; Docker
+
+(use-package docker :ensure t)
+
 ;;;; Misc
 
 (cd "~")
