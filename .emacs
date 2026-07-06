@@ -143,20 +143,20 @@
   (set-face-attribute 'default nil :family "JetBrains Mono" :height 160)
 
   (let ((fontset (face-attribute 'default :fontset))
-        (spec (font-spec :family "Noto Sans Mono CJK JP")))
+        (spec (font-spec :family "Source Han Mono")))
     (set-fontset-font fontset 'latin-jisx0201 spec)
     (set-fontset-font fontset 'katakana-jisx0201 spec)
     (set-fontset-font fontset 'japanese-jisx0208 spec))
 
   (let* ((ascii-family "Courier Prime")
          (fontset (create-fontset-from-ascii-font ascii-family))
-         (spec (font-spec :family "Noto Serif CJK JP")))
+         (spec (font-spec :family "Source Han Serif")))
     (set-fontset-font fontset 'latin-jisx0201 spec)
     (set-fontset-font fontset 'katakana-jisx0201 spec)
     (set-fontset-font fontset 'japanese-jisx0208 spec)
     (set-face-attribute 'fixed-pitch-serif nil :family ascii-family :fontset fontset :height 160))
 
-  (let* ((family "Noto Sans CJK JP")
+  (let* ((family "Source Han Sans")
          (fontset (create-fontset-from-ascii-font family))
          (spec (font-spec :family family)))
     (set-fontset-font fontset 'latin-jisx0201 spec)
