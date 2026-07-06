@@ -611,8 +611,6 @@ _C-g_: quit
 
 (require 'tramp)
 
-(setq tramp-default-method "sshx")
-
 ;;;; Time Stamps
 
 (require 'time-stamp)
