@@ -116,6 +116,7 @@
 (setq inhibit-startup-screen t
       initial-scratch-message nil
       kill-whole-line t
+      confirm-kill-emacs 'yes-or-no-p
       x-select-enable-clipboard t)
 
 (setq-default indent-tabs-mode nil
